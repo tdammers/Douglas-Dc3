@@ -132,7 +132,7 @@ var Startup = func{
   setprop("/instrumentation/doors/crew/position-norm",0);
   setprop("/controls/lighting/instruments-norm",1);
   setprop("controls/electric/battery-switch",1);
-  setprop("sim/messages/copilot", "Now press \"s\" to start engines");
+  setprop("sim/messages/copilot", "Now press s to start engines");
 }
 
 var Shutdown = func{
