@@ -13,6 +13,8 @@
           <green> 0.3 </green>
           <blue>  0.3 </blue>
         </specular>
+        <shininess type="float">-1.0</shininess>
+        <civilian type="bool">false</civilian>
       </livery>
       <livery-engine>
         <texture>Liveries/Propeller/FACH-954-prop.png</texture>

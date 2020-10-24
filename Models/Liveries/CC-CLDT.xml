@@ -13,6 +13,8 @@
           <green> 0.3 </green>
           <blue>  0.3 </blue>
         </specular>
+        <shininess type="float">-0.35</shininess>
+        <civilian type="bool">true</civilian>
       </livery>
       <livery-engine>
         <texture>Liveries/Propeller/CC-CLDT-prop.png</texture>

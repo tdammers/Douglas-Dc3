@@ -18,6 +18,8 @@
           <green> 0.2 </green>
           <blue>  0.2 </blue>
         </emission>
+        <shininess type="float">-0.75</shininess>
+        <civilian type="bool">true</civilian>
       </livery>
       <livery-engine>
         <texture>Liveries/propeller.png</texture>

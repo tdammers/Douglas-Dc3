@@ -8,7 +8,7 @@
   <sound>
     <path>Aircraft/Douglas-Dc3/Sounds/mp-sound.xml</path>
   </sound>
-  
+
   <animation>
     <!-- Objets opaques -->
     <object-name>fuselage</object-name>
@@ -73,11 +73,8 @@
     </specular>
   </animation>
 
-  <!--
-    <inherits-from>Aircraft/Douglas-Dc3/Models/Effects/model-reflect</inherits-from>
-  -->
   <effect>
-    <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+    <inherits-from>Aircraft/Douglas-Dc3/Models/Effects/Specular/bumpspec-fuselage</inherits-from>
     <object-name>fuselage</object-name>
     <object-name>ailes</object-name>
     <object-name>aileronG</object-name>

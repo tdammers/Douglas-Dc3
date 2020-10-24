@@ -13,7 +13,9 @@
           <green> 0.3 </green>
           <blue>  0.3 </blue>
         </specular>
-        <shininess>200</shininess>
+        <shininess type="float">-0.4</shininess>
+        <fresnel>0.7</fresnel>
+        <civilian type="bool">true</civilian>
       </livery>
       <livery-engine>
         <texture>Liveries/Propeller/ACH-121-prop.png</texture>
