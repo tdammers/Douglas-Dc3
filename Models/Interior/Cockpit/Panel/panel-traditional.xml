@@ -126,7 +126,7 @@
     
     <!-- Radio stack added later -->
     <model>
-        <path>Aircraft/Instruments-3d/VHF-22/ctl22-com1.xml</path>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/VHF-22/ctl22-com1.xml</path>
         <offsets>
             <x-m> -0.011 </x-m>
             <y-m> -0.531 </y-m>
