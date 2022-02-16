@@ -58,6 +58,7 @@
         <details-high type="bool">false</details-high>
         <light-cone type="bool">true</light-cone>
         <version type="string">civilian-red</version>
+        <panel type="string">traditional</panel>
       </config>
     </model>
 

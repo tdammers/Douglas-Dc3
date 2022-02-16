@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+    
+    <!--   ASI -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/asi/asi.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m> -0.510 </y-m>
+            <z-m>  0.349 </z-m>
+        </offsets>
+    </model>
+    
+    <!--ALT -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/alt/alt.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m> -0.403 </y-m>
+            <z-m>  0.349 </z-m>
+        </offsets>
+    </model>
+    
+    <!--  AI -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/ai/ai.xml</path>
+        <offsets>
+            <x-m> -0.012 </x-m>
+            <y-m> -0.256 </y-m>
+            <z-m>  0.381 </z-m>
+        </offsets>
+    </model>
+    
+    <!-- TURN -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/turn/turn.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m> -0.406 </y-m>
+            <z-m>  0.250 </z-m>
+        </offsets>
+    </model>
+    
+    <!--VSI-->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/vsi/vsi.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m> -0.297 </y-m>
+            <z-m>  0.250 </z-m>
+        </offsets>
+    </model>
+    
+    
+    <!--VOR -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/vor/vor.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m> -0.403 </y-m>
+            <z-m>  0.459 </z-m>
+        </offsets>
+    </model>
+    
+    <!-- RADIO COMPASS -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/radio-compass/radio-compass.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m> -0.510 </y-m>
+            <z-m>  0.250 </z-m>
+        </offsets>
+    </model>
+    
+    <!--rmi -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/rmi/rmi.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m> -0.264 </y-m>
+            <z-m>  0.507 </z-m>
+        </offsets>
+    </model>
+    
+    <!-- Pilot auto sterry mark III-->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/sperry/sperry.xml</path>
+        <offsets>
+            <x-m> -0.010 </x-m>
+            <y-m>  0.006 </y-m>
+            <z-m>  0.412 </z-m>
+        </offsets>
+    </model>
+    
+    <!-- Panel copilote -->
+    <!-- ASI -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/asi/asi.xml</path>
+        <offsets>
+            <x-m> -0.010 </x-m>
+            <y-m>  0.279 </y-m>
+            <z-m>  0.422 </z-m>
+        </offsets>
+    </model>
+    
+    <!-- tempérture air extérieur -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/temp/temp.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m>  0.384 </y-m>
+            <z-m>  0.421 </z-m>
+        </offsets>
+    </model>
+    
+    <!-- ALT -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/alt/alt.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m>  0.484 </y-m>
+            <z-m>  0.421 </z-m>
+        </offsets>
+    </model>
+    
+    <!-- Radio stack added later -->
+    <model>
+        <path>Aircraft/Instruments-3d/VHF-22/ctl22-com1.xml</path>
+        <offsets>
+            <x-m> -0.011 </x-m>
+            <y-m> -0.531 </y-m>
+            <z-m>  0.150 </z-m>
+            <roll-deg>0.5</roll-deg>
+        </offsets>
+    </model>
+    <model>
+        <path>Aircraft/Instruments-3d/TDR-94/ctl92-transponder.xml</path>
+        <offsets>
+            <x-m> -0.010 </x-m>
+            <y-m> -0.470 </y-m>
+            <z-m>  0.152 </z-m>
+            <roll-deg>1</roll-deg>
+        </offsets>
+    </model>
+    <model>
+        <path>Aircraft/Instruments-3d/VIR-32/ctl32-nav1.xml</path>
+        <offsets>
+            <x-m> -0.010 </x-m>
+            <y-m> -0.401 </y-m>
+            <z-m>  0.150 </z-m>
+            <roll-deg>-0.5</roll-deg>
+        </offsets>
+    </model>
+    <model>
+        <path>Aircraft/Instruments-3d/ADF-462/ctl62-adf.xml</path>
+        <offsets>
+            <x-m> -0.010 </x-m>
+            <y-m> -0.340 </y-m>
+            <z-m>  0.150 </z-m>
+            <roll-deg>0.55</roll-deg>
+        </offsets>
+    </model>
+    
+</PropertyList>

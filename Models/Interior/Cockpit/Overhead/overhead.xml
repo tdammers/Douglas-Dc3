@@ -82,14 +82,4 @@
     </offsets>
   </model>
 
-  <model>
-    <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Overhead/Instruments/VHF-22/ctl22-com1.xml</path>
-    <offsets>
-      <x-m>  0.020 </x-m>
-      <y-m> -0.020 </y-m>
-      <z-m>  0.503 </z-m>
-      <pitch-deg> 75 </pitch-deg>
-    </offsets>
-  </model>
-
 </PropertyList>
