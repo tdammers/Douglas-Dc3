@@ -22,23 +22,6 @@
   </view>
 
   <view n="101">
-    <name>Copilot View</name>
-    <type>lookfrom</type>
-    <internal archive="y">true</internal>
-    <config>
-      <from-model type="bool">true</from-model>
-      <from-model-idx type="int">0</from-model-idx>
-      <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
-      <pitch-offset-deg>-5</pitch-offset-deg>
-      <x-offset-m archive="y">0.475</x-offset-m> <!-- Right -->
-      <y-offset-m archive="y">0.434</y-offset-m> <!-- Up    -->
-      <z-offset-m archive="y">-7.965</z-offset-m> <!-- Back  -->
-      <pitch-offset-deg>-20</pitch-offset-deg>
-      <default-field-of-view-deg>70</default-field-of-view-deg>
-    </config>
-  </view>
-
-  <view n="102">
     <name>Tail Camera View</name>
     <type>lookfrom</type>
     <internal archive="y">true</internal>
@@ -54,7 +37,7 @@
     </config>
   </view>
 
-  <view n="103">
+  <view n="102">
     <name>Cockpit View</name>
     <type>lookfrom</type>
     <internal archive="y">true</internal>
@@ -70,6 +53,23 @@
     </config>
   </view>
 
+  <view n="103">
+    <name>Copilot View</name>
+    <type>lookfrom</type>
+    <internal archive="y">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+      <pitch-offset-deg>-5</pitch-offset-deg>
+      <x-offset-m archive="y">0.475</x-offset-m> <!-- Right -->
+      <y-offset-m archive="y">0.434</y-offset-m> <!-- Up    -->
+      <z-offset-m archive="y">-7.965</z-offset-m> <!-- Back  -->
+      <pitch-offset-deg>-20</pitch-offset-deg>
+      <default-field-of-view-deg>80</default-field-of-view-deg>
+    </config>
+  </view>
+
   <view n="0">
     <internal archive="y">true</internal>
     <config>
@@ -77,7 +77,7 @@
       <y-offset-m archive="y">0.434</y-offset-m> <!-- Up    -->
       <z-offset-m archive="y">-7.965</z-offset-m> <!-- Back  -->
       <pitch-offset-deg>-20</pitch-offset-deg>-->
-      <default-field-of-view-deg>70</default-field-of-view-deg>
+      <default-field-of-view-deg>80</default-field-of-view-deg>
       <limits>
         <enabled type="bool">false</enabled>
       </limits>
