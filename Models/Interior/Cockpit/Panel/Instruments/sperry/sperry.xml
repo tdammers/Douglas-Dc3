@@ -507,6 +507,7 @@
     <type>pick</type>
     <object-name>OnOff</object-name>
     <action>
+      <button>0</button>
       <binding>
         <command>property-toggle</command>
         <property>autopilot/active</property>
