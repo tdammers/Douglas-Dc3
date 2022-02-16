@@ -417,6 +417,20 @@ var avionics_bus = func(bus_volts) {
         OutPuts.getNode("adf",1).setValue(0.0);
     }
    
+   if (props.globals.getNode("/instrumentation/dme/serviceable").getBoolValue() ){
+        OutPuts.getNode("dme",1).setValue(bus_volts);
+        load += 0.000015;
+    } else {
+        OutPuts.getNode("dme",1).setValue(0.0);
+    }
+   
+   if (props.globals.getNode("/instrumentation/transponder/serviceable").getBoolValue() ){
+        OutPuts.getNode("transponder",1).setValue(bus_volts);
+        load += 0.000015;
+    } else {
+        OutPuts.getNode("transponder",1).setValue(0.0);
+    }
+   
    if (props.globals.getNode("/instrumentation/turn-indicator/serviceable").getBoolValue() ){
         OutPuts.getNode("turn-coordinator",1).setValue(bus_volts);
         load += 0.000015;
