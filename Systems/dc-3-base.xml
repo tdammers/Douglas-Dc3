@@ -62,6 +62,15 @@
       </config>
     </model>
 
+    <aircraft-data>
+        <path>/sim/model/config/show-yokes</path>
+        <path>/sim/model/config/show-pilot</path>
+        <path>/sim/model/config/show-copilot</path>
+        <path>/sim/model/config/details-high</path>
+        <path>/sim/model/config/light-cone</path>
+        <path>/sim/model/config/version</path>
+    </aircraft-data>
+
     <rendering>
       <static-lod>
         <ai-detailed>1500</ai-detailed>
