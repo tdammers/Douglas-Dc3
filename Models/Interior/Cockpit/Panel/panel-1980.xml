@@ -6,7 +6,7 @@
 
     <!--   ASI -->
     <model>
-        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/asi/asi.xml</path>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/asi2/asi.xml</path>
         <offsets>
             <x-m> -0.015 </x-m>
             <y-m> -0.510 </y-m>
