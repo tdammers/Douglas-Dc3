@@ -102,6 +102,7 @@
         <path>/sim/model/config/details-high</path>
         <path>/sim/model/config/light-cone</path>
         <path>/sim/model/config/version</path>
+        <path>/sim/model/config/panel</path>
     </aircraft-data>
 
     <rendering>
