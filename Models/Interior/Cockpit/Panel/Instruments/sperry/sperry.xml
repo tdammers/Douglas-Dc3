@@ -399,8 +399,8 @@
         <command>property-adjust</command>
         <property>autopilot/settings/target-pitch-deg</property>
         <step>-0.1</step>
-        <min>-30</min>
-        <max>30</max>
+        <min>-10</min>
+        <max>10</max>
         <wrap>0</wrap>
       </binding>
     </action>  
@@ -412,8 +412,8 @@
         <command>property-adjust</command>
         <property>autopilot/settings/target-pitch-deg</property>
         <step>-0.8</step>
-        <min>-30</min>
-        <max>30</max>
+        <min>-10</min>
+        <max>10</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -425,8 +425,8 @@
         <command>property-adjust</command>
         <property>autopilot/settings/target-pitch-deg</property>
         <step>0.1</step>
-        <min>-30</min>
-        <max>30</max>
+        <min>-10</min>
+        <max>10</max>
         <wrap>0</wrap>
       </binding>
     </action>  
@@ -438,8 +438,8 @@
         <command>property-adjust</command>
         <property>autopilot/settings/target-pitch-deg</property>
         <step>-0.1</step>
-        <min>-30</min>
-        <max>30</max>
+        <min>-10</min>
+        <max>10</max>
         <wrap>0</wrap>
       </binding>
     </action>
