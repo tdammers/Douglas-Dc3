@@ -42,7 +42,7 @@
   <animation> 
     <type>rotate</type>
     <object-name>compass</object-name>
-    <property>instrumentation/heading-indicator/indicated-heading-deg</property>
+    <property>autopilot/settings/heading-bug-deg</property>
     <center> 
       <x-m> -0.052 </x-m>
       <y-m>  0.000 </y-m>
@@ -58,7 +58,7 @@
   <animation> 
     <type>rotate</type>
     <object-name>conserv</object-name>
-    <property>autopilot/settings/heading-bug-deg</property>
+    <property>instrumentation/heading-indicator/indicated-heading-deg</property>
     <center>
       <x-m> -0.052 </x-m>
       <y-m>  0.000 </y-m>

@@ -46,7 +46,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>instrumentation/heading-indicator/offset-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -59,7 +59,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>instrumentation/heading-indicator/offset-deg</property>
         <step>-5</step>
         <min>0</min>
         <max>360</max>
@@ -72,7 +72,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>instrumentation/heading-indicator/offset-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -85,7 +85,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>instrumentation/heading-indicator/offset-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -104,7 +104,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>instrumentation/heading-indicator/offset-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -117,7 +117,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>instrumentation/heading-indicator/offset-deg</property>
         <step>5</step>
         <min>0</min>
         <max>360</max>
@@ -130,7 +130,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>instrumentation/heading-indicator/offset-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -143,7 +143,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>instrumentation/heading-indicator/offset-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -163,7 +163,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -176,7 +176,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>-5</step>
         <min>0</min>
         <max>360</max>
@@ -189,7 +189,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -202,7 +202,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -221,7 +221,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -234,7 +234,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>5</step>
         <min>0</min>
         <max>360</max>
@@ -247,7 +247,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -260,7 +260,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -280,7 +280,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -293,7 +293,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>-5</step>
         <min>0</min>
         <max>360</max>
@@ -306,7 +306,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -319,7 +319,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -338,7 +338,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -351,7 +351,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>5</step>
         <min>0</min>
         <max>360</max>
@@ -364,7 +364,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -377,7 +377,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/heading-indicator/offset-deg</property>
+        <property>autopilot/settings/heading-bug-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -401,7 +401,7 @@
         <step>-0.1</step>
         <min>-10</min>
         <max>10</max>
-        <wrap>1</wrap>
+        <wrap>0</wrap>
       </binding>
     </action>  
     <action>
@@ -414,7 +414,7 @@
         <step>-0.8</step>
         <min>-10</min>
         <max>10</max>
-        <wrap>1</wrap>
+        <wrap>0</wrap>
       </binding>
     </action>
     <action>
@@ -427,7 +427,7 @@
         <step>0.1</step>
         <min>-10</min>
         <max>10</max>
-        <wrap>1</wrap>
+        <wrap>0</wrap>
       </binding>
     </action>  
     <action>
@@ -440,7 +440,7 @@
         <step>-0.1</step>
         <min>-10</min>
         <max>10</max>
-        <wrap>1</wrap>
+        <wrap>0</wrap>
       </binding>
     </action>
   </animation>
@@ -459,7 +459,7 @@
         <step>0.1</step>
         <min>-10</min>
         <max>10</max>
-        <wrap>1</wrap>
+        <wrap>0</wrap>
       </binding>
     </action>  
     <action>
@@ -472,7 +472,7 @@
         <step>0.8</step>
         <min>-10</min>
         <max>10</max>
-        <wrap>1</wrap>
+        <wrap>0</wrap>
       </binding>
     </action>
     <action>
@@ -485,7 +485,7 @@
         <step>0.1</step>
         <min>-10</min>
         <max>10</max>
-        <wrap>1</wrap>
+        <wrap>0</wrap>
       </binding>
     </action>  
     <action>
@@ -498,7 +498,7 @@
         <step>-0.1</step>
         <min>-10</min>
         <max>10</max>
-        <wrap>1</wrap>
+        <wrap>0</wrap>
       </binding>
     </action>
   </animation>
@@ -510,9 +510,26 @@
       <button>0</button>
       <binding>
         <command>property-toggle</command>
-        <property>autopilot/active</property>
+        <property>controls/autoflight/autopilot[0]/engage</property>
       </binding>
     </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>OnOff</object-name>
+    <center>
+      <x-m>0</x-m>
+      <y-m>0.102787</y-m>
+      <z-m>-0.066929</z-m>
+    </center>
+    <axis> 
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+    <property>controls/autoflight/autopilot[0]/engage</property>
+    <factor>90</factor>
   </animation>
   
   <!-- AI -->

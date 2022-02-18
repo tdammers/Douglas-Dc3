@@ -37,4 +37,25 @@
     </emission>
   </animation>
 
+  <animation>
+    <type>rotate</type>
+    <object-name>needle</object-name>
+    <property>autopilot/suction-inhg</property>
+
+    <center> 
+      <x-m>0.000</x-m>
+      <y-m>0.000</y-m>
+      <z-m>0.000</z-m>
+    </center>
+    <axis> 
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+    <offset-deg>68</offset-deg>
+    <factor>-15</factor>
+    <max-deg>100</max-deg>
+    <min-deg>-100</min-deg>
+  </animation>
+
 </PropertyList>

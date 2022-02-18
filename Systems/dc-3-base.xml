@@ -195,6 +195,12 @@
     <flaps include="flaps.xml"/>
       
     <menubar include="../Dialogs/dc-3-menu.xml"/>
+
+    <systems>
+      <property-rule n="101">
+          <path>Aircraft/Douglas-Dc3/Systems/autopilot-control.xml</path>
+      </property-rule>
+    </systems>
     
   </sim>
 
@@ -223,6 +229,8 @@
       <file>Aircraft/Douglas-Dc3/Nasal/fuel.nas</file>
       <file>Aircraft/Douglas-Dc3/Nasal/hydraulic.nas</file>
       <file>Aircraft/Douglas-Dc3/Nasal/wipers.nas</file>
+      <file>Aircraft/Douglas-Dc3/Nasal/comm-radios.nas</file>
+      <file>Aircraft/Douglas-Dc3/Nasal/autopilot-control.nas</file>
     </dc3>
     <chronograph>
       <file>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/chronograph/chronograph.nas</file>

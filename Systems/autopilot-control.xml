@@ -1,0 +1,52 @@
+<PropertyList>
+    <filter>
+        <name>Autopilot suction</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <expression>
+                <max>
+                    <property>systems/vacuum[0]/suction-inhg</property>
+                    <property>systems/vacuum[1]/suction-inhg</property>
+                </max>
+            </expression>
+        </input>
+        <output>
+            <property>/autopilot/suction-inhg</property>
+        </output>
+    </filter>
+    <filter>
+        <name>Autopilot on/off</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <greater-than>
+                    <property>autopilot/suction-inhg</property>
+                    <value>2.0</value>
+                </greater-than>
+            </condition>
+            <property>controls/autoflight/autopilot[0]/engage</property>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>
+            <property>/autopilot/active</property>
+        </output>
+    </filter>
+    <filter>
+        <name>Autopilot pitch sync</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <enable>
+            <condition>
+                <not>
+                    <property>controls/autoflight/autopilot[0]/engage</property>
+                </not>
+            </condition>
+        </enable>
+        <input><property>orientation/pitch-deg</property></input>
+        <output>autopilot/settings/target-pitch-deg</output>
+    </filter>
+</PropertyList>
