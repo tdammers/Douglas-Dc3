@@ -6,6 +6,7 @@
 
   <animation>
     <object-name>Light</object-name>
+    <type>noshadow</type>
   </animation>
   
   <effect>
