@@ -25,6 +25,7 @@
     <object-name>vitre</object-name>
   </effect>
   
+  <!--
   <animation>
     <type>material</type>
     <object-name>face</object-name>
@@ -36,6 +37,7 @@
       <blue>  0.25 </blue>
     </emission>
   </animation>
+  -->
 
   <animation>
     <type>material</type>
@@ -43,9 +45,9 @@
     <object-name>Compass.Case</object-name>
     <emission>
       <factor-prop>controls/lighting/instruments-norm</factor-prop>
-      <red>   0.8 </red>
-      <green> 0.4 </green>
-      <blue>  0.2 </blue>
+      <red>   1.0 </red>
+      <green> 1.0 </green>
+      <blue>  1.0 </blue>
     </emission>
   </animation>
 

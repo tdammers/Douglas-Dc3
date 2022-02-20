@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+    <path>Century41-FMA.ac</path>
+    
+    <animation>
+        <type>material</type>
+        <object-name>Light.AP</object-name>
+        <emission>
+            <factor-prop>autopilot/active</factor-prop>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+        </emission>
+    </animation>
+
+    <animation>
+        <type>textranslate</type>
+        <object-name>Light.AP</object-name>
+        <property>autopilot/active</property>
+        <factor>0.625</factor>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+        </axis>
+    </animation>
+</PropertyList>
