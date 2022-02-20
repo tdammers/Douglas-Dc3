@@ -59,20 +59,18 @@
     </axis>
   </animation>
 
-  <!--
   <animation> 
     <type>translate</type>
     <object-name>ai</object-name>
     <property>instrumentation/attitude-indicator/indicated-pitch-deg</property>
-    <factor>0.0005</factor>
-    <max>30</max>
-    <min>-30</min>
+    <factor>-0.002</factor>
+    <max>0.05</max>
+    <min>-0.05</min>
     <axis> 
       <x> 0 </x>
       <y> 0 </y>
       <z> 1 </z>
     </axis>
   </animation>
-  -->
 
 </PropertyList>

@@ -31,6 +31,7 @@
     <object-name>face</object-name>
     <object-name>cadran</object-name>
     <object-name>axe</object-name>
+    <object-name>reference</object-name>
     <emission>
       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   0.50 </red>
@@ -47,6 +48,45 @@
       <x> 1 </x>
       <y> 0 </y>
       <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation> 
+    <type>translate</type>
+    <object-name>axe</object-name>
+    <property>instrumentation/attitude-indicator/indicated-pitch-deg</property>
+    <factor>-0.002</factor>
+    <max>0.05</max>
+    <min>-0.05</min>
+    <axis> 
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation> 
+    <type>rotate</type>
+    <object-name>reference</object-name>
+    <property>autopilot/settings/target-roll-deg</property>
+    <axis> 
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation> 
+    <type>translate</type>
+    <object-name>reference</object-name>
+    <property>autopilot/settings/target-pitch-deg</property>
+    <factor>-0.002</factor>
+    <max>0.05</max>
+    <min>-0.05</min>
+    <axis> 
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
     </axis>
   </animation>
 

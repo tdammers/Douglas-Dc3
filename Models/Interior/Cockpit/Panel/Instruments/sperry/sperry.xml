@@ -280,7 +280,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>autopilot/settings/target-roll-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -293,7 +293,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>autopilot/settings/target-roll-deg</property>
         <step>-5</step>
         <min>0</min>
         <max>360</max>
@@ -306,7 +306,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>autopilot/settings/target-roll-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -319,7 +319,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>autopilot/settings/target-roll-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -338,7 +338,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>autopilot/settings/target-roll-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -351,7 +351,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>autopilot/settings/target-roll-deg</property>
         <step>5</step>
         <min>0</min>
         <max>360</max>
@@ -364,7 +364,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>autopilot/settings/target-roll-deg</property>
         <step>1</step>
         <min>0</min>
         <max>360</max>
@@ -377,7 +377,7 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>autopilot/settings/heading-bug-deg</property>
+        <property>autopilot/settings/target-roll-deg</property>
         <step>-1</step>
         <min>0</min>
         <max>360</max>
@@ -399,8 +399,8 @@
         <command>property-adjust</command>
         <property>autopilot/settings/target-pitch-deg</property>
         <step>-0.1</step>
-        <min>-10</min>
-        <max>10</max>
+        <min>-30</min>
+        <max>30</max>
         <wrap>0</wrap>
       </binding>
     </action>  
@@ -412,8 +412,8 @@
         <command>property-adjust</command>
         <property>autopilot/settings/target-pitch-deg</property>
         <step>-0.8</step>
-        <min>-10</min>
-        <max>10</max>
+        <min>-30</min>
+        <max>30</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -425,8 +425,8 @@
         <command>property-adjust</command>
         <property>autopilot/settings/target-pitch-deg</property>
         <step>0.1</step>
-        <min>-10</min>
-        <max>10</max>
+        <min>-30</min>
+        <max>30</max>
         <wrap>0</wrap>
       </binding>
     </action>  
@@ -438,8 +438,8 @@
         <command>property-adjust</command>
         <property>autopilot/settings/target-pitch-deg</property>
         <step>-0.1</step>
-        <min>-10</min>
-        <max>10</max>
+        <min>-30</min>
+        <max>30</max>
         <wrap>0</wrap>
       </binding>
     </action>

@@ -67,7 +67,7 @@
   <animation>
     <type>rotate</type>
     <object-name>RMI.Needle1</object-name>
-    <property>instrumentation/nav[1]/heading-deg</property>
+    <property>instrumentation/nav[0]/heading-deg</property>
     <axis>
       <x> -1 </x>
       <y>  0 </y>

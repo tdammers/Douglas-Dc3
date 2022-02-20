@@ -40,7 +40,7 @@
   <animation>
     <type>rotate</type>
     <object-name>needle</object-name>
-    <property>autopilot/suction-inhg</property>
+    <property>autopilot/sperry/suction-inhg</property>
 
     <center> 
       <x-m>0.000</x-m>
