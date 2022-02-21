@@ -1,13 +1,5 @@
-setprop('autopilot/active', 0);
-
-setlistener('autopilot/active', func (node) {
-    var active = node.getValue();
-    if (active) {
-        setprop('autopilot/locks/altitude', 'pitch-hold');
-        setprop('autopilot/locks/heading', 'dg-heading-hold');
-    }
-    else {
-        setprop('autopilot/locks/altitude', '');
-        setprop('autopilot/locks/heading', '');
-    }
-});
+setlistener('sim/model/config/panel', func (node) {
+    var panel = node.getValue();
+    setprop('autopilot/sperry/available', panel == 'traditional');
+    setprop('autopilot/century/available', panel == 'standard');
+}, 1, 0);

@@ -22,10 +22,13 @@
         <gain>1</gain>
         <input>
             <condition>
-                <greater-than>
-                    <property>autopilot/sperry/suction-inhg</property>
-                    <value>2.0</value>
-                </greater-than>
+                <and>
+                    <greater-than>
+                        <property>autopilot/sperry/suction-inhg</property>
+                        <value>2.0</value>
+                    </greater-than>
+                    <property>/autopilot/sperry/available</property>
+                </and>
             </condition>
             <property>controls/autoflight/autopilot[0]/engage</property>
         </input>
