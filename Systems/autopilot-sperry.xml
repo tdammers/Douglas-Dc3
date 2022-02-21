@@ -179,7 +179,7 @@
             <property>autopilot/sperry/pitch-error</property>
             <scale>0.1</scale>
         </input>
-        <output>controls/flight/elevator</output>
+        <output>controls/flight/elevator-trim</output>
         <min>-1</min>
         <max>1</max>
         <Kp>-1.0</Kp>
