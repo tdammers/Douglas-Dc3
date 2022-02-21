@@ -16,7 +16,7 @@
 
     <!--  AI -->
     <model>
-        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/ai2/ai0.xml</path>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/ai3/ai.xml</path>
         <offsets>
             <x-m>  0.000 </x-m>
             <y-m> -0.400 </y-m>
@@ -133,6 +133,17 @@
             <x-m>  0.000 </x-m>
             <y-m> -0.290  </y-m>
             <z-m>  0.520 </z-m>
+        </offsets>
+    </model>
+
+    <!-- AP buttons -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/century41/buttons.xml</path>
+        <offsets>
+            <x-m>  0.110 </x-m>
+            <y-m>  0.000  </y-m>
+            <z-m>  0.220 </z-m>
+            <pitch-deg>-40</pitch-deg>
         </offsets>
     </model>
 

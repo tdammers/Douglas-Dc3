@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+    <path>Century41-buttons.ac</path>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>OnOff</object-name>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.01</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+        <property>controls/autoflight/autopilot[0]/engage</property>
+        <factor>-20</factor>
+        <offset-deg>10</offset-deg>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>OnOff</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-toggle</command>
+                <property>controls/autoflight/autopilot[0]/engage</property>
+            </binding>
+        </action>
+    </animation>
+</PropertyList>
+

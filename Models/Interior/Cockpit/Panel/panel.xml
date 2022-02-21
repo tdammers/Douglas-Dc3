@@ -138,7 +138,7 @@
     <condition>
       <equals>
         <property>sim/model/config/panel</property>
-        <value>1980</value>
+        <value>standard</value>
       </equals>
     </condition>
   </animation>

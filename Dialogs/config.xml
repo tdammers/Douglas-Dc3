@@ -156,7 +156,7 @@
           <pref-width>110</pref-width>
           <property>sim/model/config/panel</property>
           <value>traditional</value>
-          <value>1980</value>
+          <value>standard</value>
           <binding>
             <command>dialog-apply</command>
           </binding>
