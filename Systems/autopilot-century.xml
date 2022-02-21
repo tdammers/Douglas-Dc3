@@ -174,11 +174,66 @@
     <filter>
         <type>gain</type>
         <gain>1</gain>
-        <!-- TODO: NAV mode -->
         <input>
+            <condition>
+                <equals>
+                    <property>autopilot/century/lateral-mode</property>
+                    <value>2</value>
+                </equals>
+            </condition>
+            <property>autopilot/century/nav-intercept-course</property>
+        </input>
+        <input>
+            <condition>
+                <equals>
+                    <property>autopilot/century/lateral-mode</property>
+                    <value>1</value>
+                </equals>
+            </condition>
             <property>instrumentation/heading-indicator/heading-bug-deg</property>
         </input>
+        <input>
+            <condition>
+                <equals>
+                    <property>autopilot/century/lateral-mode</property>
+                    <value>0</value>
+                </equals>
+            </condition>
+            <property>instrumentation/heading-indicator/indicated-heading-deg</property>
+        </input>
         <output>autopilot/settings/heading-bug-deg</output>
+    </filter>
+
+    <!-- NAV intercept course -->
+    <pi-simple-controller>
+        <name>NAV intercept offset</name>
+        <debug type="bool">false</debug>
+        <input>
+            <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
+            <scale>30</scale>
+        </input>
+        <output>autopilot/century/nav-intercept-course-offset</output>
+        <Kp>-2</Kp>
+        <Ki>-0.05</Ki>
+        <min>-45</min>
+        <max>45</max>
+    </pi-simple-controller>
+    <filter>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <expression>
+                <sum>
+                    <property>instrumentation/nav[0]/radials/selected-deg</property>
+                    <property>autopilot/century/nav-intercept-course-offset</property>
+                </sum>
+            </expression>
+        </input>
+        <output>autopilot/century/nav-intercept-course</output>
+        <period>
+            <min>0</min>
+            <max>360</max>
+        </period>
     </filter>
 
     <!-- Target roll computer -->
@@ -259,14 +314,101 @@
         <min>-1500</min>
         <max>1500</max>
     </filter>
+
+    <logic>
+        <input>
+            <and>
+                <property>instrumentation/nav[0]/gs-in-range</property>
+                <property>instrumentation/nav[0]/has-gs</property>
+                <less-than>
+                    <property>instrumentation/nav[0]/gs-needle-deflection-norm</property>
+                    <value>0.125</value>
+                </less-than>
+                <greater-than>
+                    <property>instrumentation/nav[0]/gs-needle-deflection-norm</property>
+                    <value>-0.125</value>
+                </greater-than>
+            </and>
+        </input>
+        <output>autopilot/century/gs-captured</output>
+    </logic>
+
+    <filter>
+        <name>GS base descent rate</name>
+        <type>gain</type>
+        <gain>-5.307161</gain>
+        <input>instrumentation/airspeed-indicator/indicated-speed-kt</input>
+        <output>autopilot/century/gs-base-descent-rate</output>
+    </filter>
     <pi-simple-controller>
-        <name>Vertical speed to pitch</name>
+        <name>GS</name>
+        <debug type="bool">true</debug>
         <enable>
             <condition>
                 <equals>
                     <property>autopilot/century/vertical-mode</property>
-                    <value>1</value>
+                    <value>2</value>
                 </equals>
+            </condition>
+        </enable>
+        <input>
+            <condition>
+                <and>
+                    <property>instrumentation/nav[0]/gs-in-range</property>
+                    <property>instrumentation/nav[0]/has-gs</property>
+                </and>
+            </condition>
+            <property>instrumentation/nav[0]/gs-needle-deflection-norm</property>
+            <scale>1000</scale>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>autopilot/century/vertical-speed-deviation</output>
+        <Kp>-4</Kp>
+        <Ki>-1</Ki>
+        <min>-1500</min>
+        <max>1500</max>
+    </pi-simple-controller>
+    <filter>
+        <type>gain</type>
+        <gain>1</gain>
+        <enable>
+            <condition>
+                <equals>
+                    <property>autopilot/century/vertical-mode</property>
+                    <value>2</value>
+                </equals>
+            </condition>
+        </enable>
+        <input>
+            <expression>
+                <sum>
+                    <property>autopilot/century/vertical-speed-deviation</property>
+                    <property>autopilot/century/gs-base-descent-rate</property>
+                </sum>
+            </expression>
+        </input>
+        <min>-1500</min>
+        <max>0</max>
+
+        <output>autopilot/settings/vertical-speed-fpm</output>
+    </filter>
+
+    <pi-simple-controller>
+        <name>Vertical speed to pitch</name>
+        <enable>
+            <condition>
+                <or>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>1</value>
+                    </equals>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>2</value>
+                    </equals>
+                </or>
             </condition>
         </enable>
         <input>
