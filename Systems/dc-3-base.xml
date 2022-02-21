@@ -272,6 +272,9 @@
       <file>Aircraft/Douglas-Dc3/Nasal/comm-radios.nas</file>
       <file>Aircraft/Douglas-Dc3/Nasal/autopilot-control.nas</file>
     </dc3>
+    <century>
+      <file>Aircraft/Douglas-Dc3/Nasal/autopilot-century.nas</file>
+    </century>
     <chronograph>
       <file>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/chronograph/chronograph.nas</file>
     </chronograph>
@@ -289,6 +292,8 @@
     <century>
         <active type="bool">false</active>
         <available type="bool">false</available>
+        <lateral-mode type="int">0</lateral-mode>
+        <vertical-mode type="int">0</vertical-mode>
     </century>
   </autopilot>
 

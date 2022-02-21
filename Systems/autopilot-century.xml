@@ -1,0 +1,351 @@
+<?xml version="1.0"?>
+<PropertyList>
+    <!-- master on/off -->
+    <filter>
+        <name>Autopilot on/off</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>systems/electrical/outputs/autopilot</property>
+                        <value>22.0</value>
+                    </greater-than>
+                    <property>autopilot/century/available</property>
+                </and>
+            </condition>
+            <property>controls/autoflight/autopilot[0]/engage</property>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>
+            <property>/autopilot/century/active</property>
+        </output>
+    </filter>
+
+    <!-- lights -->
+    <filter>
+        <name>HDG light</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <and>
+                    <property>/autopilot/century/active</property>
+                    <equals>
+                        <property>autopilot/century/lateral-mode</property>
+                        <value>1</value>
+                    </equals>
+                </and>
+            </condition>
+            <value>1</value>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>autopilot/century/lights/hdg</output>
+    </filter>
+    <filter>
+        <name>NAV light</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <and>
+                    <property>/autopilot/century/active</property>
+                    <equals>
+                        <property>autopilot/century/lateral-mode</property>
+                        <value>2</value>
+                    </equals>
+                </and>
+            </condition>
+            <value>1</value>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>autopilot/century/lights/nav</output>
+    </filter>
+    <filter>
+        <name>ATT light</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <and>
+                    <property>/autopilot/century/active</property>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>0</value>
+                    </equals>
+                </and>
+            </condition>
+            <value>1</value>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>autopilot/century/lights/att</output>
+    </filter>
+    <filter>
+        <name>ALT light</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <and>
+                    <property>/autopilot/century/active</property>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>1</value>
+                    </equals>
+                </and>
+            </condition>
+            <value>1</value>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>autopilot/century/lights/alt</output>
+    </filter>
+
+    <filter>
+        <name>APR light</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <and>
+                    <property>/autopilot/century/active</property>
+                    <property>autopilot/century/gs-armed</property>
+                </and>
+            </condition>
+            <value>1</value>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>autopilot/century/lights/apr</output>
+    </filter>
+
+    <filter>
+        <name>GS light</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <and>
+                    <property>/autopilot/century/active</property>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>2</value>
+                    </equals>
+                </and>
+            </condition>
+            <value>1</value>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>autopilot/century/lights/gs</output>
+    </filter>
+
+    <!-- Error computers -->
+    <filter>
+        <name>Century heading error</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <property>instrumentation/heading-indicator/indicated-heading-deg</property>
+        </input>
+        <reference>
+            <property>autopilot/settings/heading-bug-deg</property>
+        </reference>
+        <period>
+            <min>-180</min>
+            <max>180</max>
+        </period>
+        <output>autopilot/century/heading-error</output>
+    </filter>
+
+    <!-- Target heading computer -->
+    <filter>
+        <type>gain</type>
+        <gain>1</gain>
+        <!-- TODO: NAV mode -->
+        <input>
+            <property>instrumentation/heading-indicator/heading-bug-deg</property>
+        </input>
+        <output>autopilot/settings/heading-bug-deg</output>
+    </filter>
+
+    <!-- Target roll computer -->
+    <pi-simple-controller>
+        <name>Target roll angle</name>
+        <enable>
+            <condition>
+                <not>
+                    <equals>
+                        <property>autopilot/century/lateral-mode</property>
+                        <value>0</value>
+                    </equals>
+                </not>
+            </condition>
+        </enable>
+        <input>
+            <property>autopilot/century/heading-error</property>
+        </input>
+        <output>autopilot/settings/target-roll-deg</output>
+        <Kp>1.5</Kp>
+        <Ki>0.1</Ki>
+        <min>-30</min>
+        <max>30</max>
+    </pi-simple-controller>
+    <filter>
+        <type>gain</type>
+        <gain>1</gain>
+        <enable>
+            <condition>
+                <equals>
+                    <property>autopilot/century/lateral-mode</property>
+                    <value>0</value>
+                </equals>
+            </condition>
+        </enable>
+        <input>
+            <value>0.0</value>
+        </input>
+        <output>autopilot/settings/target-roll-deg</output>
+        <min>-30</min>
+        <max>30</max>
+    </filter>
+    <pi-simple-controller>
+        <name>Target roll rate</name>
+        <input>
+            <property>instrumentation/attitude-indicator/indicated-roll-deg</property>
+        </input>
+        <reference>
+            <property>autopilot/settings/target-roll-deg</property>
+        </reference>
+        <output>autopilot/settings/target-roll-rate-degps</output>
+        <Kp>2.0</Kp>
+        <Ki>0.2</Ki>
+        <min>-10</min>
+        <max>10</max>
+    </pi-simple-controller>
+
+    <!-- Pitch computers -->
+    <filter>
+        <name>Alt to fpm</name>
+        <type>gain</type>
+        <gain>-5</gain>
+        <enable>
+            <condition>
+                <equals>
+                    <property>autopilot/century/vertical-mode</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+        </enable>
+        <input>
+            <property>instrumentation/altimeter/indicated-altitude-ft</property>
+        </input>
+        <reference>
+            <property>autopilot/settings/target-altitude-ft</property>
+        </reference>
+        <output>autopilot/settings/vertical-speed-fpm</output>
+        <min>-1500</min>
+        <max>1500</max>
+    </filter>
+    <pi-simple-controller>
+        <name>Vertical speed to pitch</name>
+        <enable>
+            <condition>
+                <equals>
+                    <property>autopilot/century/vertical-mode</property>
+                    <value>1</value>
+                </equals>
+            </condition>
+        </enable>
+        <input>
+            <property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+        </input>
+        <reference>
+            <property>autopilot/settings/vertical-speed-fpm</property>
+        </reference>
+        <output>autopilot/settings/target-pitch-deg</output>
+        <Kp>0.005</Kp>
+        <Ki>0.001</Ki>
+        <min>-5</min>
+        <max>5</max>
+    </pi-simple-controller>
+    <pi-simple-controller>
+        <name>Target pitch rate</name>
+        <input>
+            <property>instrumentation/attitude-indicator/indicated-pitch-deg</property>
+        </input>
+        <reference>
+            <property>autopilot/settings/target-pitch-deg</property>
+        </reference>
+        <output>autopilot/settings/target-pitch-rate-degps</output>
+        <Kp>0.4</Kp>
+        <Ki>0.01</Ki>
+        <min>-10</min>
+        <max>10</max>
+    </pi-simple-controller>
+
+    <!-- Pitch & roll rate computers -->
+    <filter>
+        <name>Roll rate</name>
+        <type>derivative</type>
+        <filter-time>1</filter-time>
+        <input>instrumentation/attitude-indicator/indicated-roll-deg</input>
+        <output>autopilot/internal/roll-rate-degps</output>
+    </filter>
+    <filter>
+        <name>Pitch rate</name>
+        <type>derivative</type>
+        <filter-time>1</filter-time>
+        <input>instrumentation/attitude-indicator/indicated-pitch-deg</input>
+        <output>autopilot/internal/pitch-rate-degps</output>
+    </filter>
+
+    <!-- Flight control controllers  -->
+    <pi-simple-controller>
+        <name>Aileron control</name>
+        <enable>
+            <condition>
+                <property>autopilot/century/active</property>
+            </condition>
+        </enable>
+        <input>
+            <property>autopilot/internal/roll-rate-degps</property>
+        </input>
+        <reference>
+            <property>autopilot/settings/target-roll-rate-degps</property>
+        </reference>
+        <output>controls/flight/aileron</output>
+        <Kp>0.1</Kp>
+        <Ki>1.0</Ki>
+    </pi-simple-controller>
+    <pi-simple-controller>
+        <name>Elevator control</name>
+        <enable>
+            <condition>
+                <property>autopilot/century/active</property>
+            </condition>
+        </enable>
+        <input>
+            <property>autopilot/internal/pitch-rate-degps</property>
+        </input>
+        <reference>
+            <property>autopilot/settings/target-pitch-rate-degps</property>
+        </reference>
+        <output>controls/flight/elevator-trim</output>
+        <Kp>-0.1</Kp>
+        <Ki>-1.0</Ki>
+    </pi-simple-controller>
+
+</PropertyList>
