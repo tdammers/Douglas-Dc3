@@ -403,6 +403,13 @@ var avionics_bus = func(bus_volts) {
         OutPuts.getNode("nav",1).setValue(0.0);
     }
    
+    if (props.globals.getNode("/autopilot/century/available").getBoolValue() ){
+        OutPuts.getNode("autopilot",1).setValue(bus_volts);
+        load += 0.00015;
+    } else {
+        OutPuts.getNode("autopilot",1).setValue(0.0);
+    }
+   
    if (props.globals.getNode("/instrumentation/nav[1]/serviceable").getBoolValue() ){
         OutPuts.getNode("nav[1]",1).setValue(bus_volts);
         load += 0.000015;
