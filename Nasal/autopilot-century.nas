@@ -54,3 +54,11 @@ setlistener('autopilot/century/vertical-mode', func (node) {
     }
     setprop('autopilot/century/gs-armed', 0);
 }, 1, 1);
+
+setlistener('autopilot/century/gs-captured', func (node) {
+    if (node.getBoolValue()) {
+        if (getprop('autopilot/century/gs-armed')) {
+            setprop('autopilot/century/vertical-mode', 2);
+        }
+    }
+}, 1, 0);

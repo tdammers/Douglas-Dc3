@@ -112,8 +112,8 @@
             <binding>
                 <command>property-cycle</command>
                 <property>autopilot/century/lateral-mode</property>
-                <value>0</value>
                 <value>1</value>
+                <value>0</value>
             </binding>
         </action>
     </animation>
@@ -125,8 +125,8 @@
             <binding>
                 <command>property-cycle</command>
                 <property>autopilot/century/lateral-mode</property>
-                <value>0</value>
                 <value>2</value>
+                <value>0</value>
             </binding>
         </action>
     </animation>
