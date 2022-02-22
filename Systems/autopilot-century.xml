@@ -359,10 +359,16 @@
         <gain>-5</gain>
         <enable>
             <condition>
-                <equals>
-                    <property>autopilot/century/vertical-mode</property>
-                    <value>1</value>
-                </equals>
+                <and>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>1</value>
+                    </equals>
+                    <equals>
+                        <property>autopilot/century/pitch-button</property>
+                        <value>0</value>
+                    </equals>
+                </and>
             </condition>
         </enable>
         <input>
@@ -374,6 +380,86 @@
         <output>autopilot/settings/vertical-speed-fpm</output>
         <min>-1500</min>
         <max>1500</max>
+    </filter>
+    <filter>
+        <name>Pitch button to fpm (ALT mode)</name>
+        <type>gain</type>
+        <gain>500</gain>
+        <enable>
+            <condition>
+                <and>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>1</value>
+                    </equals>
+                    <not>
+                        <equals>
+                            <property>autopilot/century/pitch-button</property>
+                            <value>0</value>
+                        </equals>
+                    </not>
+                </and>
+            </condition>
+        </enable>
+        <input>
+            <property>autopilot/century/pitch-button</property>
+        </input>
+        <output>autopilot/settings/vertical-speed-fpm</output>
+        <min>-500</min>
+        <max>500</max>
+    </filter>
+    <filter>
+        <name>Pitch button to fpm (ATT mode)</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <enable>
+            <condition>
+                <and>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>0</value>
+                    </equals>
+                    <not>
+                        <equals>
+                            <property>autopilot/century/pitch-button</property>
+                            <value>0</value>
+                        </equals>
+                    </not>
+                </and>
+            </condition>
+        </enable>
+        <input>
+            <condition>
+                <and>
+                    <equals>
+                        <property>autopilot/century/pitch-button</property>
+                        <value>1</value>
+                    </equals>
+                    <less-than>
+                        <property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+                        <value>500</value>
+                    </less-than>
+                </and>
+            </condition>
+            <value>500</value>
+        </input>
+        <input>
+            <condition>
+                <and>
+                    <equals>
+                        <property>autopilot/century/pitch-button</property>
+                        <value>-1</value>
+                    </equals>
+                    <greater-than>
+                        <property>instrumentation/vertical-speed-indicator/indicated-speed-fpm</property>
+                        <value>-500</value>
+                    </greater-than>
+                </and>
+            </condition>
+            <value>-500</value>
+        </input>
+        <input>instrumentation/vertical-speed-indicator/indicated-speed-fpm</input>
+        <output>autopilot/settings/vertical-speed-fpm</output>
     </filter>
     
     <filter>
@@ -451,6 +537,12 @@
                         <property>autopilot/century/vertical-mode</property>
                         <value>2</value>
                     </equals>
+                    <not>
+                        <equals>
+                            <property>autopilot/century/pitch-button</property>
+                            <value>0</value>
+                        </equals>
+                    </not>
                 </or>
             </condition>
         </enable>

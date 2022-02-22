@@ -34,73 +34,42 @@
     </animation>
 
     <animation>
-        <type>knob</type>
-        <object-name>UpDown</object-name>
-        <condition>
-            <equals>
-                <property>autopilot/century/vertical-mode</property>
-                <value>0</value>
-            </equals>
-        </condition>
+        <type>pick</type>
+        <object-name>Up</object-name>
         <action>
+            <button>0</button>
             <binding>
-                <command>property-adjust</command>
-                <property>autopilot/settings/target-pitch-deg</property>
-                <factor>-0.1</factor>
-                <min>-10</min>
-                <max>10</max>
-                <wrap>0</wrap>
-            </binding>
-        </action>
-        <hovered>
-            <binding>
-                <command>set-tooltip</command>
-                <tooltip-id>target-pitch</tooltip-id>
-                <mapping>vertical</mapping>
-                <label>Pitch: %+4.1f deg</label>
-                <property>autopilot/settings/target-pitch-deg</property>
-            </binding>
-        </hovered>
-    </animation>
-
-    <animation>
-        <type>knob</type>
-        <object-name>UpDown</object-name>
-        <condition>
-            <equals>
-                <property>autopilot/century/vertical-mode</property>
+                <command>property-assign</command>
+                <property>autopilot/century/pitch-button</property>
                 <value>1</value>
-            </equals>
-        </condition>
-        <action>
-            <binding>
-                <command>property-adjust</command>
-                <property>autopilot/settings/target-altitude-ft</property>
-                <factor>-25</factor>
-                <min>0</min>
-                <max>25000</max>
-                <wrap>0</wrap>
             </binding>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>autopilot/century/pitch-button</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
         </action>
-        <shift-action>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>Down</object-name>
+        <action>
+            <button>0</button>
             <binding>
-                <command>property-adjust</command>
-                <property>autopilot/settings/target-altitude-ft</property>
-                <factor>-100</factor>
-                <min>0</min>
-                <max>25000</max>
-                <wrap>0</wrap>
+                <command>property-assign</command>
+                <property>autopilot/century/pitch-button</property>
+                <value>-1</value>
             </binding>
-        </shift-action>
-        <hovered>
-            <binding>
-                <command>set-tooltip</command>
-                <tooltip-id>target-pitch</tooltip-id>
-                <mapping>vertical</mapping>
-                <label>Altitude: %5.0f ft</label>
-                <property>autopilot/settings/target-altitude-ft</property>
-            </binding>
-        </hovered>
+            <mod-up>
+                <binding>
+                    <command>property-assign</command>
+                    <property>autopilot/century/pitch-button</property>
+                    <value>0</value>
+                </binding>
+            </mod-up>
+        </action>
     </animation>
 
 
@@ -127,6 +96,13 @@
                 <property>autopilot/century/lateral-mode</property>
                 <value>2</value>
                 <value>0</value>
+            </binding>
+        </action>
+        <action>
+            <button>1</button>
+            <binding>
+                <command>property-toggle</command>
+                <property>autopilot/century/nav-armed</property>
             </binding>
         </action>
     </animation>
@@ -170,6 +146,19 @@
             <binding>
                 <command>property-toggle</command>
                 <property>autopilot/century/gs-armed</property>
+            </binding>
+        </action>
+        <action>
+            <button>1</button>
+            <binding>
+                <command>property-assign</command>
+                <property>autopilot/century/nav-armed</property>
+                <value>1</value>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>autopilot/century/gs-armed</property>
+                <value>1</value>
             </binding>
         </action>
     </animation>
