@@ -260,6 +260,7 @@
       <file>Aircraft/Douglas-Dc3/Nasal/paratroopers.nas</file>
     </para>
     <dc3>
+      <file>Aircraft/Instruments-3d/ki266/ki266.nas</file>
       <file>Aircraft/Douglas-Dc3/Nasal/electrical.nas</file>
       <file>Aircraft/Douglas-Dc3/Nasal/dc3.nas</file>
       <file>Aircraft/Douglas-Dc3/Nasal/interpolate.nas</file>

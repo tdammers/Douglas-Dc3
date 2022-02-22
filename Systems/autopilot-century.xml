@@ -247,20 +247,6 @@
     
     <!-- NAV intercept course -->
     <filter>
-        <name>Intercept rate</name>
-        <type>derivative</type>
-        <filter-time>1</filter-time>
-        <input>instrumentation/nav[0]/heading-needle-deflection-norm</input>
-        <output>autopilot/century/nav-intercept-rate</output>
-    </filter>
-    <filter>
-        <type>gain</type>
-        <gain>-1</gain>
-        <name>Target intercept rate</name>
-        <input>instrumentation/nav[0]/heading-needle-deflection-norm</input>
-        <output>autopilot/century/target-nav-intercept-rate</output>
-    </filter>
-    <filter>
         <type>gain</type>
         <gain>1</gain>
         <name>Current course error</name>
@@ -268,14 +254,21 @@
         <reference>instrumentation/nav[0]/radials/selected-deg</reference>
         <output>autopilot/century/nav-course-error</output>
     </filter>
+    <predict-simple>
+        <name>Predicted needle deflection 5 seconds ahead</name>
+        <input>instrumentation/nav[0]/heading-needle-deflection-norm</input>
+        <output>autopilot/century/needle-deflection-5-sec-ahead</output>
+        <seconds>5.0</seconds>
+        <filter-gain>0.1</filter-gain>
+    </predict-simple>
     <pi-simple-controller>
         <name>NAV intercept offset</name>
         <debug type="bool">false</debug>
-        <input>autopilot/century/nav-intercept-rate</input>
-        <reference>autopilot/century/target-nav-intercept-rate</reference>
+        <!-- <input>instrumentation/nav[0]/heading-needle-deflection-norm</input> -->
+        <input>autopilot/century/needle-deflection-5-sec-ahead</input>
         <output>autopilot/century/nav-intercept-course-offset</output>
-        <Kp>-30</Kp>
-        <Ki>-1.5</Ki>
+        <Kp>-120</Kp>
+        <Ki>-4.5</Ki>
         <min>-45</min>
         <max>45</max>
     </pi-simple-controller>
@@ -601,7 +594,9 @@
             <condition>
                 <and>
                     <property>autopilot/century/active</property>
-                    <not><property>controls/autoflight/cws</property></not>
+                    <not>
+                        <property>controls/autoflight/cws</property>
+                    </not>
                 </and>
             </condition>
         </enable>
@@ -621,7 +616,9 @@
             <condition>
                 <and>
                     <property>autopilot/century/active</property>
-                    <not><property>controls/autoflight/cws</property></not>
+                    <not>
+                        <property>controls/autoflight/cws</property>
+                    </not>
                 </and>
             </condition>
         </enable>

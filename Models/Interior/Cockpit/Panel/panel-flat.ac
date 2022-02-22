@@ -8,7 +8,7 @@ name "divers"
 data 6
 divers
 crease 180.0
-texture "panel.png"
+texture "panel-piedmont.png"
 numvert 16
 -0.01055 0.11979 0.0391
 -0.01055 0.11979 0.1927
@@ -61,7 +61,7 @@ name "panel"
 data 5
 panel
 crease 180.0
-texture "panel.png"
+texture "panel-piedmont.png"
 numvert 37
 -0.01124 0.547 0.41268
 -0.20892 0.60002 0.04549
@@ -353,7 +353,7 @@ name "visses"
 data 6
 visses
 crease 180.0
-texture "panel.png"
+texture "panel-piedmont.png"
 numvert 1517
 -0.01046 0.08018 -0.63292
 -0.01064 0.08114 -0.6317
