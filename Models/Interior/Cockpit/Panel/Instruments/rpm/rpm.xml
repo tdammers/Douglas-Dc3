@@ -29,7 +29,7 @@
     <type>material</type>
     <object-name>face</object-name>
     <object-name>needle1</object-name>
-    <object-name>needle1</object-name>
+    <object-name>needle2</object-name>
     <emission>
       <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
       <red>   0.50 </red>
