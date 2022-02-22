@@ -18,15 +18,10 @@
     <model>
         <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/ai3/ai.xml</path>
         <offsets>
-            <x-m>  0.000 </x-m>
+            <x-m> -0.010 </x-m>
             <y-m> -0.400 </y-m>
             <z-m>  0.430 </z-m>
         </offsets>
-        <scale>
-            <x>2.0</x>
-            <y>2.0</y>
-            <z>2.0</z>
-        </scale>
     </model>
 
     <!--ALT -->
@@ -70,6 +65,17 @@
         </offsets>
     </model>
 
+    <!--  DME -->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/ki266/ki266.xml</path>
+        <offsets>
+            <x-m>  -0.010 </x-m>
+            <y-m>  -0.400 </y-m>
+            <z-m>   0.255 </z-m>
+        </offsets>
+    </model>
+
+
     <!-- Panel copilote -->
     <!--   ASI -->
     <model>
@@ -83,17 +89,12 @@
 
     <!--  AI -->
     <model>
-        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/ai2/ai1.xml</path>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/ai3/ai.xml</path>
         <offsets>
-            <x-m>  0.000 </x-m>
+            <x-m> -0.010 </x-m>
             <y-m>  0.400 </y-m>
             <z-m>  0.430 </z-m>
         </offsets>
-        <scale>
-            <x>2.0</x>
-            <y>2.0</y>
-            <z>2.0</z>
-        </scale>
     </model>
 
     <!--ALT -->
@@ -112,6 +113,16 @@
         <offsets>
             <x-m> -0.015 </x-m>
             <y-m>  0.290 </y-m>
+            <z-m>  0.330 </z-m>
+        </offsets>
+    </model>
+
+    <!--VSI-->
+    <model>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/vsi/vsi.xml</path>
+        <offsets>
+            <x-m> -0.015 </x-m>
+            <y-m>  0.510</y-m>
             <z-m>  0.330 </z-m>
         </offsets>
     </model>

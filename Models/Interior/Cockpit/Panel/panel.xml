@@ -81,25 +81,6 @@
     </offsets>
   </model>
    
-  <!--Checklist -->
-  <model>
-    <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/checklist/checklist1.xml</path>
-    <offsets>
-      <x-m> -0.007 </x-m>
-      <y-m> -0.693 </y-m>
-      <z-m>  0.220 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/checklist/checklist2.xml</path>
-    <offsets>
-      <x-m> -0.007 </x-m>
-      <y-m> -0.613 </y-m>
-      <z-m>  0.220 </z-m>
-    </offsets>
-  </model>
-  
   <!-- Pression hydraulique + Pression des trains-->
   <model>
     <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/hydgear/hydgear.xml</path>
@@ -142,20 +123,6 @@
       </equals>
     </condition>
   </animation>
-
-  <animation>
-      <object-name>panel</object-name>	
-      
-      <type>material</type>
-      <texture>panel-piedmont.png</texture>
-      <condition>
-        <equals>
-          <property>sim/model/config/panel</property>
-          <value>standard</value>
-        </equals>
-      </condition>
-  </animation>
-    
 
   <!-- chronometre -->
   <model>

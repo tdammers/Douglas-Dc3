@@ -328,3 +328,5 @@ var update_system = func{
   tire.get_rotation("yasim");
   settimer(update_system, 0);
 }
+
+ki266.new(0);
