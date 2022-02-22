@@ -24,7 +24,45 @@
             <property>/autopilot/century/active</property>
         </output>
     </filter>
-
+    
+    <!-- Trigger conditions -->
+    <logic>
+        <input>
+            <and>
+                <property>instrumentation/nav[0]/gs-in-range</property>
+                <property>instrumentation/nav[0]/has-gs</property>
+                <less-than>
+                    <property>instrumentation/nav[0]/gs-needle-deflection-norm</property>
+                    <value>0.125</value>
+                </less-than>
+                <greater-than>
+                    <property>instrumentation/nav[0]/gs-needle-deflection-norm</property>
+                    <value>-0.125</value>
+                </greater-than>
+                <input>autopilot/century/nav-captured</input>
+            </and>
+        </input>
+        <output>autopilot/century/gs-captured</output>
+    </logic>
+    
+    <logic>
+        <input>
+            <and>
+                <property>instrumentation/nav[0]/in-range</property>
+                <less-than>
+                    <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
+                    <value>0.95</value>
+                </less-than>
+                <greater-than>
+                    <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
+                    <value>-0.95</value>
+                </greater-than>
+            </and>
+        </input>
+        <output>autopilot/century/nav-captured</output>
+    </logic>
+    
+    
     <!-- lights -->
     <filter>
         <name>HDG light</name>
@@ -55,10 +93,13 @@
             <condition>
                 <and>
                     <property>/autopilot/century/active</property>
-                    <equals>
-                        <property>autopilot/century/lateral-mode</property>
-                        <value>2</value>
-                    </equals>
+                    <or>
+                        <equals>
+                            <property>autopilot/century/lateral-mode</property>
+                            <value>2</value>
+                        </equals>
+                        <property>autopilot/century/nav-armed</property>
+                    </or>
                 </and>
             </condition>
             <value>1</value>
@@ -110,7 +151,7 @@
         </input>
         <output>autopilot/century/lights/alt</output>
     </filter>
-
+    
     <filter>
         <name>APR light</name>
         <type>gain</type>
@@ -118,7 +159,7 @@
         <input>
             <condition>
                 <and>
-                    <property>/autopilot/century/active</property>
+                    <property>autopilot/century/active</property>
                     <property>autopilot/century/gs-armed</property>
                 </and>
             </condition>
@@ -129,7 +170,7 @@
         </input>
         <output>autopilot/century/lights/apr</output>
     </filter>
-
+    
     <filter>
         <name>GS light</name>
         <type>gain</type>
@@ -151,7 +192,7 @@
         </input>
         <output>autopilot/century/lights/gs</output>
     </filter>
-
+    
     <!-- Error computers -->
     <filter>
         <name>Century heading error</name>
@@ -169,7 +210,7 @@
         </period>
         <output>autopilot/century/heading-error</output>
     </filter>
-
+    
     <!-- Target heading computer -->
     <filter>
         <type>gain</type>
@@ -203,18 +244,38 @@
         </input>
         <output>autopilot/settings/heading-bug-deg</output>
     </filter>
-
+    
     <!-- NAV intercept course -->
+    <filter>
+        <name>Intercept rate</name>
+        <type>derivative</type>
+        <filter-time>1</filter-time>
+        <input>instrumentation/nav[0]/heading-needle-deflection-norm</input>
+        <output>autopilot/century/nav-intercept-rate</output>
+    </filter>
+    <filter>
+        <type>gain</type>
+        <gain>-1</gain>
+        <name>Target intercept rate</name>
+        <input>instrumentation/nav[0]/heading-needle-deflection-norm</input>
+        <output>autopilot/century/target-nav-intercept-rate</output>
+    </filter>
+    <filter>
+        <type>gain</type>
+        <gain>1</gain>
+        <name>Current course error</name>
+        <input>instrumentation/heading-indicator/indicated-heading-deg</input>
+        <reference>instrumentation/nav[0]/radials/selected-deg</reference>
+        <output>autopilot/century/nav-course-error</output>
+    </filter>
     <pi-simple-controller>
         <name>NAV intercept offset</name>
         <debug type="bool">false</debug>
-        <input>
-            <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
-            <scale>90</scale>
-        </input>
+        <input>autopilot/century/nav-intercept-rate</input>
+        <reference>autopilot/century/target-nav-intercept-rate</reference>
         <output>autopilot/century/nav-intercept-course-offset</output>
-        <Kp>-2</Kp>
-        <Ki>-0.05</Ki>
+        <Kp>-30</Kp>
+        <Ki>-1.5</Ki>
         <min>-45</min>
         <max>45</max>
     </pi-simple-controller>
@@ -235,7 +296,7 @@
             <max>360</max>
         </period>
     </filter>
-
+    
     <!-- Target roll computer -->
     <pi-simple-controller>
         <name>Target roll angle</name>
@@ -287,10 +348,10 @@
         <output>autopilot/settings/target-roll-rate-degps</output>
         <Kp>2.0</Kp>
         <Ki>0.2</Ki>
-        <min>-10</min>
-        <max>10</max>
+        <min>-5</min>
+        <max>5</max>
     </pi-simple-controller>
-
+    
     <!-- Pitch computers -->
     <filter>
         <name>Alt to fpm</name>
@@ -314,25 +375,7 @@
         <min>-1500</min>
         <max>1500</max>
     </filter>
-
-    <logic>
-        <input>
-            <and>
-                <property>instrumentation/nav[0]/gs-in-range</property>
-                <property>instrumentation/nav[0]/has-gs</property>
-                <less-than>
-                    <property>instrumentation/nav[0]/gs-needle-deflection-norm</property>
-                    <value>0.125</value>
-                </less-than>
-                <greater-than>
-                    <property>instrumentation/nav[0]/gs-needle-deflection-norm</property>
-                    <value>-0.125</value>
-                </greater-than>
-            </and>
-        </input>
-        <output>autopilot/century/gs-captured</output>
-    </logic>
-
+    
     <filter>
         <name>GS base descent rate</name>
         <type>gain</type>
@@ -391,10 +434,10 @@
         </input>
         <min>-1500</min>
         <max>0</max>
-
+        
         <output>autopilot/settings/vertical-speed-fpm</output>
     </filter>
-
+    
     <pi-simple-controller>
         <name>Vertical speed to pitch</name>
         <enable>
@@ -434,10 +477,10 @@
         <output>autopilot/settings/target-pitch-rate-degps</output>
         <Kp>0.4</Kp>
         <Ki>0.01</Ki>
-        <min>-10</min>
-        <max>10</max>
+        <min>-0.7</min>
+        <max>0.7</max>
     </pi-simple-controller>
-
+    
     <!-- Pitch & roll rate computers -->
     <filter>
         <name>Roll rate</name>
@@ -453,7 +496,7 @@
         <input>instrumentation/attitude-indicator/indicated-pitch-deg</input>
         <output>autopilot/internal/pitch-rate-degps</output>
     </filter>
-
+    
     <!-- Flight control controllers  -->
     <pi-simple-controller>
         <name>Aileron control</name>
@@ -489,5 +532,5 @@
         <Kp>-0.1</Kp>
         <Ki>-1.0</Ki>
     </pi-simple-controller>
-
+    
 </PropertyList>
