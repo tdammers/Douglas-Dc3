@@ -22,6 +22,25 @@
     </animation>
 
     <animation>
+        <type>rotate</type>
+        <object-name>Up</object-name>
+        <object-name>Down</object-name>
+        <axis>
+            <x>0</x>
+            <y>1</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>-0.01</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+        </center>
+        <property>autopilot/century/pitch-button</property>
+        <factor>10</factor>
+        <offset-deg>0</offset-deg>
+    </animation>
+
+    <animation>
         <type>pick</type>
         <object-name>OnOff</object-name>
         <action>
