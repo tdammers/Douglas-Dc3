@@ -210,7 +210,7 @@
         <debug type="bool">false</debug>
         <input>
             <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
-            <scale>30</scale>
+            <scale>90</scale>
         </input>
         <output>autopilot/century/nav-intercept-course-offset</output>
         <Kp>-2</Kp>
@@ -342,7 +342,7 @@
     </filter>
     <pi-simple-controller>
         <name>GS</name>
-        <debug type="bool">true</debug>
+        <debug type="bool">false</debug>
         <enable>
             <condition>
                 <equals>
