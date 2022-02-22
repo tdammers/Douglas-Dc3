@@ -43,6 +43,30 @@
     </tags>
 
     <tutorials include="../Tutorials/dc-3-tutorials.xml"/>
+
+    <previews>
+        <preview>
+            <type>exterior</type>
+            <path>Splash/splash1.jpg</path>
+            <splash type="bool">true</splash>
+        </preview>
+        <preview>
+            <type>exterior</type>
+            <path>Splash/splash2.jpg</path>
+            <splash type="bool">true</splash>
+        </preview>
+        <preview>
+            <type>exterior</type>
+            <path>Splash/splash3.jpg</path>
+            <splash type="bool">true</splash>
+        </preview>
+        <preview>
+            <type>interior</type>
+            <path>Splash/splash4.jpg</path>
+            <splash type="bool">true</splash>
+        </preview>
+    </previews>
+    
   
     <submodels>
       <serviceable type="bool">true</serviceable>
