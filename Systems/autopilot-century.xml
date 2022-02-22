@@ -528,22 +528,27 @@
         <name>Vertical speed to pitch</name>
         <enable>
             <condition>
-                <or>
-                    <equals>
-                        <property>autopilot/century/vertical-mode</property>
-                        <value>1</value>
-                    </equals>
-                    <equals>
-                        <property>autopilot/century/vertical-mode</property>
-                        <value>2</value>
-                    </equals>
-                    <not>
+                <and>
+                    <or>
                         <equals>
-                            <property>autopilot/century/pitch-button</property>
-                            <value>0</value>
+                            <property>autopilot/century/vertical-mode</property>
+                            <value>1</value>
                         </equals>
+                        <equals>
+                            <property>autopilot/century/vertical-mode</property>
+                            <value>2</value>
+                        </equals>
+                        <not>
+                            <equals>
+                                <property>autopilot/century/pitch-button</property>
+                                <value>0</value>
+                            </equals>
+                        </not>
+                    </or>
+                    <not>
+                        <property>controls/autoflight/cws</property>
                     </not>
-                </or>
+                </and>
             </condition>
         </enable>
         <input>
@@ -594,7 +599,10 @@
         <name>Aileron control</name>
         <enable>
             <condition>
-                <property>autopilot/century/active</property>
+                <and>
+                    <property>autopilot/century/active</property>
+                    <not><property>controls/autoflight/cws</property></not>
+                </and>
             </condition>
         </enable>
         <input>
@@ -611,7 +619,10 @@
         <name>Elevator control</name>
         <enable>
             <condition>
-                <property>autopilot/century/active</property>
+                <and>
+                    <property>autopilot/century/active</property>
+                    <not><property>controls/autoflight/cws</property></not>
+                </and>
             </condition>
         </enable>
         <input>

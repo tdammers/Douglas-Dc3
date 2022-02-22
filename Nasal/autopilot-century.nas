@@ -9,6 +9,24 @@
 # 0 = ATT (pitch hold)
 # 1 = ALT (altitude hold)
 
+setprop('controls/flight/cws', 0);
+
+var syncVertical = func (mode=-1) {
+    if (mode < 0)
+        mode = getprop('autopilot/century/vertical-mode');
+    printf("syncVertical; Mode: %i", mode);
+    if (mode == 1) {
+        # alt hold
+        setprop('autopilot/settings/target-altitude-ft',
+            math.round(getprop('instrumentation/altimeter/indicated-altitude-ft'), 25));
+    }
+    elsif (mode == 0) {
+        # pitch hold; we round to 0.1° to allow the pilot to select exactly 0°
+        setprop('autopilot/settings/target-pitch-deg',
+            math.round(getprop('instrumentation/attitude-indicator/indicated-pitch-deg') * 10.0) / 10.0);
+    }
+};
+
 setlistener('autopilot/century/active', func (node) {
     if (node.getBoolValue()) {
         # A/P activated
@@ -25,9 +43,7 @@ setlistener('autopilot/century/active', func (node) {
         # wings level
         setprop('autopilot/settings/target-roll-deg', 0.0);
 
-        # pitch hold; we round to 0.1° to allow the pilot to select exactly 0°
-        setprop('autopilot/settings/target-pitch-deg',
-            math.round(getprop('instrumentation/attitude-indicator/indicated-pitch-deg') * 10.0) / 10.0);
+        syncVertical(0);
     }
 }, 1, 0);
 
@@ -42,33 +58,21 @@ setlistener('autopilot/century/lateral-mode', func (node) {
 
 setlistener('autopilot/century/vertical-mode', func (node) {
     var mode = node.getValue() or 0;
-    if (mode == 0) {
-        # pitch hold; we round to 0.1° to allow the pilot to select exactly 0°
-        setprop('autopilot/settings/target-pitch-deg',
-            math.round(getprop('instrumentation/attitude-indicator/indicated-pitch-deg') * 10.0) / 10.0);
-    }
-    elsif (mode == 1) {
-        # alt hold
-        setprop('autopilot/settings/target-altitude-ft',
-            math.round(getprop('instrumentation/altimeter/indicated-altitude-ft'), 25));
-    }
+    syncVertical(mode);
     setprop('autopilot/century/gs-armed', 0);
 }, 1, 1);
 
 setlistener('autopilot/century/pitch-button', func (node) {
-    var state = node.getValue();
-    if (state == 0) {
-        var mode = getprop('autopilot/century/vertical-mode');
-        if (mode == 1) {
-            # alt hold
-            setprop('autopilot/settings/target-altitude-ft',
-                math.round(getprop('instrumentation/altimeter/indicated-altitude-ft'), 25));
-        }
-        elsif (mode == 0) {
-            # pitch hold; we round to 0.1° to allow the pilot to select exactly 0°
-            setprop('autopilot/settings/target-pitch-deg',
-                math.round(getprop('instrumentation/attitude-indicator/indicated-pitch-deg') * 10.0) / 10.0);
-        }
+    var state = node.getValue() or 0;
+    if (!state) {
+        syncVertical();
+    }
+}, 1, 0);
+
+setlistener('controls/autoflight/cws', func (node) {
+    var state = node.getValue() or 0;
+    if (!state) {
+        syncVertical();
     }
 }, 1, 0);
 
