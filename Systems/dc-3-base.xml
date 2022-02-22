@@ -65,6 +65,11 @@
             <path>Splash/splash4.jpg</path>
             <splash type="bool">true</splash>
         </preview>
+        <preview>
+            <type>exterior</type>
+            <path>Splash/splash5.jpg</path>
+            <splash type="bool">true</splash>
+        </preview>
     </previews>
     
   
