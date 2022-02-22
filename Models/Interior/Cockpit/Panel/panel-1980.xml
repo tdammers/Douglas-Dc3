@@ -64,7 +64,7 @@
     <model>
         <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/NSA360/NSA360.xml</path>
         <offsets>
-            <x-m> -0.015 </x-m>
+            <x-m> -0.010 </x-m>
             <y-m> -0.400 </y-m>
             <z-m>  0.330 </z-m>
         </offsets>
