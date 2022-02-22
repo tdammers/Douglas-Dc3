@@ -152,6 +152,14 @@
 
       <group>
         <layout>hbox</layout>
+        <text>
+          <label>Panel layout</label>
+          <halign>left</halign>
+        </text>
+      </group>
+
+      <group>
+        <layout>hbox</layout>
         <combo>
           <pref-width>110</pref-width>
           <property>sim/model/config/panel</property>
