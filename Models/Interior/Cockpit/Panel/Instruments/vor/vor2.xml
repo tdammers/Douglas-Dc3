@@ -3,13 +3,13 @@
 <PropertyList>
 
  <params>
-  <nav-to-flag>/instrumentation/nav[0]/to-flag</nav-to-flag>
-  <nav-from-flag>/instrumentation/nav[0]/from-flag</nav-from-flag>
-  <nav-radial-selected>/instrumentation/nav[0]/radials/selected-deg</nav-radial-selected>
-  <nav-gs-needle-deflection>/instrumentation/nav[0]/gs-needle-deflection</nav-gs-needle-deflection>
-  <nav-heading-needle-deflection>/instrumentation/nav[0]/heading-needle-deflection</nav-heading-needle-deflection>
-  <nav-in-range>/instrumentation/nav[0]/in-range</nav-in-range>
-  <gs-in-range>/instrumentation/nav[0]/gs-in-range</gs-in-range>
+  <nav-to-flag>/instrumentation/nav[1]/to-flag</nav-to-flag>
+  <nav-from-flag>/instrumentation/nav[1]/from-flag</nav-from-flag>
+  <nav-radial-selected>/instrumentation/nav[1]/radials/selected-deg</nav-radial-selected>
+  <nav-gs-needle-deflection>/instrumentation/nav[1]/gs-needle-deflection</nav-gs-needle-deflection>
+  <nav-heading-needle-deflection>/instrumentation/nav[1]/heading-needle-deflection</nav-heading-needle-deflection>
+  <nav-in-range>/instrumentation/nav[1]/in-range</nav-in-range>
+  <gs-in-range>/instrumentation/nav[1]/gs-in-range</gs-in-range>
  </params>
 
  <path>vor.ac</path>
@@ -27,10 +27,10 @@
   <object-name>GS_out_of_range</object-name>
   <object-name>GS_in_range</object-name>
   <emission>
-   <red>1.0</red>
-   <green>0.2</green>
-   <blue>0.0</blue>
-   <factor-prop>/sim/model/material/instruments/factor</factor-prop>
+    <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    <red>   0.50 </red>
+    <green> 0.25 </green>
+    <blue>  0.25 </blue>
   </emission>
  </animation>
 
@@ -38,10 +38,10 @@
   <type>material</type>
   <object-name>disk</object-name>
   <emission>
-   <red>0.45</red>
-   <green>0.09</green>
-   <blue>0.00001</blue>
-   <factor-prop>/sim/model//material/instruments/factor</factor-prop>
+    <factor-prop>systems/electrical/outputs/instrument-lights</factor-prop>
+    <red>   0.50 </red>
+    <green> 0.25 </green>
+    <blue>  0.25 </blue>
   </emission>
  </animation>
 
@@ -140,7 +140,7 @@
   </axis>
  </animation>
 
-<!--	VOR 1 Radial adjust  -->
+<!--	VOR 2 Radial adjust  -->
 
 <animation>
     <type>knob</type>
@@ -154,7 +154,7 @@
      <action>
          <binding>
            <command>property-adjust</command>
-           <property>/instrumentation/nav/radials/selected-deg</property>
+           <property>/instrumentation/nav[1]/radials/selected-deg</property>
            <factor>1</factor>
            <min>0</min>
            <max>360</max>
@@ -165,15 +165,13 @@
     <hovered>
      <binding>
        <command>set-tooltip</command>
-       <tooltip-id>nav1-obs</tooltip-id>
-       <label>Nav 1 Radial %3d</label>
+       <tooltip-id>nav2-obs</tooltip-id>
+       <label>Nav 2 Radial %3d</label>
        <mapping>heading</mapping>
-       <property>/instrumentation/nav/radials/selected-deg</property>
+       <property>/instrumentation/nav[1]/radials/selected-deg</property>
     </binding>
     </hovered>
  </animation>
-     
- 
 
  <animation>
   <name>Alpha Order Group</name>

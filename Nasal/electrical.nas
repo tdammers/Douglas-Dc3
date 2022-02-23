@@ -132,6 +132,7 @@ setlistener("/sim/signals/fdm-initialized", func {
     props.globals.getNode("/controls/electric/external-power",1).setBoolValue(0);
     props.globals.getNode("/controls/electric/battery-switch",1).setBoolValue(0);
     props.globals.getNode("/sim/failure-manager/instrumentation/comm/serviceable",1).setBoolValue(1);
+    props.globals.getNode("/sim/failure-manager/instrumentation/comm[1]/serviceable",1).setBoolValue(1);
     props.globals.getNode("/instrumentation/kt76a/mode",1).setValue("0");
       #### ENGINE[0] ####
     props.globals.getNode("/controls/electric/engine[0]/generator",1).setBoolValue(1);
@@ -387,6 +388,12 @@ var avionics_bus = func(bus_volts) {
         load += 0.00015;
     } else {
         OutPuts.getNode("comm",1).setValue(0.0);
+    }
+    if (props.globals.getNode("/instrumentation/comm[1]/serviceable").getBoolValue() and props.globals.getNode("/sim/failure-manager/instrumentation/comm[1]/serviceable").getBoolValue()){
+        OutPuts.getNode("comm[1]",1).setValue(bus_volts);
+        load += 0.00015;
+    } else {
+        OutPuts.getNode("comm[1]",1).setValue(0.0);
     }
 #
 #    if (props.globals.getNode("/instrumentation/kt76a/mode").getValue() > 0 and props.globals.getNode("/controls/switches/transponder").getBoolValue()){
