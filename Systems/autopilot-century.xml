@@ -274,7 +274,6 @@
             <scale>-3</scale>
         </reference>
         <reference>
-            <property>instrumentation/nav[0]/frequencies/is-localizer-frequency</property>
             <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
             <scale>-10</scale>
         </reference>
@@ -377,7 +376,7 @@
             </condition>
         </enable>
         <input>
-            <property>instrumentation/altimeter/indicated-altitude-ft</property>
+            <property>instrumentation/altimeter/pressure-alt-ft</property>
         </input>
         <reference>
             <property>autopilot/settings/target-altitude-ft</property>

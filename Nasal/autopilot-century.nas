@@ -36,7 +36,7 @@ var syncVertical = func (mode=-1) {
         mode = p.verticalMode.getValue() or 0;
     if (mode == ALT) {
         setprop('autopilot/settings/target-altitude-ft',
-            math.round(getprop('instrumentation/altimeter/indicated-altitude-ft'), 25));
+            math.round(getprop('instrumentation/altimeter/pressure-alt-ft'), 25));
     }
     elsif (mode == ATT) {
         # pitch hold; we round to 0.1° to allow the pilot to select exactly 0°
