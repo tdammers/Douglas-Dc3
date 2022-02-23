@@ -106,7 +106,7 @@
     <type>rotate</type>
     <object-name>VolantG</object-name>
     <property>controls/flight/aileron</property>
-    <factor>33</factor>
+    <factor>90</factor>
     <center>
       <x-m>  0.3480 </x-m>
       <y-m> -0.3780 </y-m>
@@ -123,7 +123,7 @@
     <type>rotate</type>
     <object-name>VolantD</object-name>
     <property>controls/flight/aileron</property>
-    <factor>35</factor>
+    <factor>90</factor>
     <center>
       <x-m> 0.3480 </x-m>
       <y-m> 0.3780 </y-m>
