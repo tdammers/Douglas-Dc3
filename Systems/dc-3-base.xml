@@ -295,7 +295,16 @@
         <available type="bool">false</available>
         <lateral-mode type="int">0</lateral-mode>
         <vertical-mode type="int">0</vertical-mode>
+        <hdg-button type="int">0</hdg-button>
+        <nav-button type="int">0</nav-button>
+        <apr-button type="int">0</apr-button>
+        <rev-button type="int">0</rev-button>
+        <att-button type="int">0</att-button>
+        <alt-button type="int">0</alt-button>
     </century>
+    <inputs>
+        <pitch-button type="int">0</pitch-button>
+    </inputs>
   </autopilot>
 
 </PropertyList>

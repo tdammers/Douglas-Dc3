@@ -254,21 +254,33 @@
         <reference>instrumentation/nav[0]/radials/selected-deg</reference>
         <output>autopilot/century/nav-course-error</output>
     </filter>
-    <predict-simple>
-        <name>Predicted needle deflection 5 seconds ahead</name>
+    <filter>
+        <type>derivative</type>
         <input>instrumentation/nav[0]/heading-needle-deflection-norm</input>
-        <output>autopilot/century/needle-deflection-5-sec-ahead</output>
-        <seconds>5.0</seconds>
-        <filter-gain>0.1</filter-gain>
-    </predict-simple>
+        <output>autopilot/century/nav-capture-rate</output>
+        <filter-time>1.0</filter-time>
+    </filter>
     <pi-simple-controller>
         <name>NAV intercept offset</name>
         <debug type="bool">false</debug>
-        <!-- <input>instrumentation/nav[0]/heading-needle-deflection-norm</input> -->
-        <input>autopilot/century/needle-deflection-5-sec-ahead</input>
+        <input>
+            <property>autopilot/century/nav-capture-rate</property>
+        </input>
+        <reference>
+            <condition>
+                <property>instrumentation/nav[0]/frequencies/is-localizer-frequency</property>
+            </condition>
+            <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
+            <scale>-3</scale>
+        </reference>
+        <reference>
+            <property>instrumentation/nav[0]/frequencies/is-localizer-frequency</property>
+            <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
+            <scale>-10</scale>
+        </reference>
         <output>autopilot/century/nav-intercept-course-offset</output>
-        <Kp>-120</Kp>
-        <Ki>-4.5</Ki>
+        <Kp>-20</Kp>
+        <Ki>-0.4</Ki>
         <min>-45</min>
         <max>45</max>
     </pi-simple-controller>
