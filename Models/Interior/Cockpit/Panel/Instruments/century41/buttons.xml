@@ -45,7 +45,7 @@
             <y-m>0</y-m>
             <z-m>0</z-m>
         </center>
-        <property>autopilot/century/pitch-button</property>
+        <property>autopilot/inputs/pitch-button</property>
         <factor>10</factor>
         <offset-deg>0</offset-deg>
     </animation>
@@ -69,13 +69,13 @@
             <button>0</button>
             <binding>
                 <command>property-assign</command>
-                <property>autopilot/century/pitch-button</property>
+                <property>autopilot/inputs/pitch-button</property>
                 <value>1</value>
             </binding>
             <mod-up>
                 <binding>
                     <command>property-assign</command>
-                    <property>autopilot/century/pitch-button</property>
+                    <property>autopilot/inputs/pitch-button</property>
                     <value>0</value>
                 </binding>
             </mod-up>
@@ -88,13 +88,13 @@
             <button>0</button>
             <binding>
                 <command>property-assign</command>
-                <property>autopilot/century/pitch-button</property>
+                <property>autopilot/inputs/pitch-button</property>
                 <value>-1</value>
             </binding>
             <mod-up>
                 <binding>
                     <command>property-assign</command>
-                    <property>autopilot/century/pitch-button</property>
+                    <property>autopilot/inputs/pitch-button</property>
                     <value>0</value>
                 </binding>
             </mod-up>
@@ -108,10 +108,9 @@
         <action>
             <button>0</button>
             <binding>
-                <command>property-cycle</command>
-                <property>autopilot/century/lateral-mode</property>
+                <command>property-assign</command>
+                <property>autopilot/century/hdg-button</property>
                 <value>1</value>
-                <value>0</value>
             </binding>
         </action>
     </animation>
@@ -121,17 +120,37 @@
         <action>
             <button>0</button>
             <binding>
-                <command>property-cycle</command>
-                <property>autopilot/century/lateral-mode</property>
-                <value>2</value>
-                <value>0</value>
+                <command>property-assign</command>
+                <property>autopilot/century/nav-button</property>
+                <value>1</value>
             </binding>
         </action>
         <action>
             <button>1</button>
             <binding>
-                <command>property-toggle</command>
-                <property>autopilot/century/nav-armed</property>
+                <command>property-assign</command>
+                <property>autopilot/century/nav-button</property>
+                <value>2</value>
+            </binding>
+        </action>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>APR</object-name>
+        <action>
+            <button>0</button>
+            <binding>
+                <command>property-assign</command>
+                <property>autopilot/century/apr-button</property>
+                <value>1</value>
+            </binding>
+        </action>
+        <action>
+            <button>1</button>
+            <binding>
+                <command>property-assign</command>
+                <property>autopilot/century/apr-button</property>
+                <value>2</value>
             </binding>
         </action>
     </animation>
@@ -143,8 +162,8 @@
             <button>0</button>
             <binding>
                 <command>property-assign</command>
-                <property>autopilot/century/vertical-mode</property>
-                <value>0</value>
+                <property>autopilot/century/att-button</property>
+                <value>1</value>
             </binding>
         </action>
     </animation>
@@ -156,37 +175,7 @@
             <button>0</button>
             <binding>
                 <command>property-assign</command>
-                <property>autopilot/century/vertical-mode</property>
-                <value>1</value>
-            </binding>
-        </action>
-    </animation>
-    
-    <animation>
-        <type>pick</type>
-        <object-name>APR</object-name>
-        <action>
-            <button>0</button>
-            <binding>
-                <command>property-assign</command>
-                <property>autopilot/century/lateral-mode</property>
-                <value>2</value>
-            </binding>
-            <binding>
-                <command>property-toggle</command>
-                <property>autopilot/century/gs-armed</property>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <binding>
-                <command>property-assign</command>
-                <property>autopilot/century/nav-armed</property>
-                <value>1</value>
-            </binding>
-            <binding>
-                <command>property-assign</command>
-                <property>autopilot/century/gs-armed</property>
+                <property>autopilot/century/alt-button</property>
                 <value>1</value>
             </binding>
         </action>

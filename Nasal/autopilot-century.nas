@@ -9,61 +9,140 @@
 # 0 = ATT (pitch hold)
 # 1 = ALT (altitude hold)
 
+var ROLL = 0;
+var HDG = 1;
+var NAV = 2;
+
+var ATT = 0;
+var ALT = 1;
+
+
 setprop('controls/flight/cws', 0);
+setprop('autopilot/century/hdg-button', 0);
+setprop('autopilot/century/nav-button', 0);
+setprop('autopilot/century/apr-button', 0);
+setprop('autopilot/century/att-button', 0);
+setprop('autopilot/century/alt-button', 0);
+
+var p = {
+    "verticalMode": props.globals.getNode('autopilot/century/vertical-mode'),
+    "lateralMode": props.globals.getNode('autopilot/century/lateral-mode'),
+    "navArmed": props.globals.getNode('autopilot/century/nav-armed'),
+    "gsArmed": props.globals.getNode('autopilot/century/gs-armed'),
+};
 
 var syncVertical = func (mode=-1) {
     if (mode < 0)
-        mode = getprop('autopilot/century/vertical-mode');
-    printf("syncVertical; Mode: %i", mode);
-    if (mode == 1) {
-        # alt hold
+        mode = p.verticalMode.getValue() or 0;
+    if (mode == ALT) {
         setprop('autopilot/settings/target-altitude-ft',
             math.round(getprop('instrumentation/altimeter/indicated-altitude-ft'), 25));
     }
-    elsif (mode == 0) {
+    elsif (mode == ATT) {
         # pitch hold; we round to 0.1° to allow the pilot to select exactly 0°
         setprop('autopilot/settings/target-pitch-deg',
             math.round(getprop('instrumentation/attitude-indicator/indicated-pitch-deg') * 10.0) / 10.0);
     }
 };
 
+var wingsLevel = func {
+    setprop('autopilot/settings/target-roll-deg', 0.0);
+}
+
 setlistener('autopilot/century/active', func (node) {
     if (node.getBoolValue()) {
         # A/P activated
 
         # wings level
-        setprop('autopilot/century/lateral-mode', 0);
+        p.lateralMode.setValue(0);
 
         # pitch hold
-        setprop('autopilot/century/vertical-mode', 0);
+        p.verticalMode.setValue(0);
 
         # disarm APR
-        setprop('autopilot/century/gs-armed', 0);
+        p.gsArmed.setValue(0);
+
+        # disarm NAV
+        p.navArmed.setValue(0);
 
         # wings level
-        setprop('autopilot/settings/target-roll-deg', 0.0);
-
+        wingsLevel();
         syncVertical(0);
     }
 }, 1, 0);
 
-setlistener('autopilot/century/lateral-mode', func (node) {
-    var mode = node.getValue() or 0;
-    if (mode == 0) {
-        # wings level
-        setprop('autopilot/settings/target-roll-deg', 0.0);
+setlistener('autopilot/century/hdg-button', func (node) {
+    var mode = p.lateralMode.getValue();
+
+    if (mode == HDG) {
+        p.lateralMode.setValue(ROLL);
+        wingsLevel();
     }
-    setprop('autopilot/century/gs-armed', 0);
+    else {
+        p.lateralMode.setValue(HDG);
+    }
+    p.gsArmed.setBoolValue(0);
+    p.navArmed.setBoolValue(0);
 }, 1, 1);
 
-setlistener('autopilot/century/vertical-mode', func (node) {
-    var mode = node.getValue() or 0;
-    syncVertical(mode);
-    setprop('autopilot/century/gs-armed', 0);
+setlistener('autopilot/century/nav-button', func (node) {
+    var mode = p.lateralMode.getValue();
+    var arm = node.getValue() == 2;
+
+    if (arm) {
+        p.navArmed.toggleBoolValue();
+        p.gsArmed.setBoolValue(0);
+    }
+    else {
+        if (mode == NAV) {
+            p.lateralMode.setValue(ROLL);
+            wingsLevel();
+        }
+        else {
+            p.lateralMode.setValue(NAV);
+        }
+        p.gsArmed.setBoolValue(0);
+        p.navArmed.setBoolValue(0);
+    }
 }, 1, 1);
 
-setlistener('autopilot/century/pitch-button', func (node) {
+setlistener('autopilot/century/apr-button', func (node) {
+    var mode = p.lateralMode.getValue();
+    var arm = node.getValue() == 2;
+
+    if (arm) {
+        p.gsArmed.toggleBoolValue();
+        p.navArmed.setBoolValue(p.gsArmed.getBoolValue());
+    }
+    else {
+        if (p.gsArmed.getBoolValue()) {
+            p.lateralMode.setValue(ROLL);
+            wingsLevel();
+            p.gsArmed.setBoolValue(0);
+        }
+        else {
+            p.lateralMode.setValue(NAV);
+            p.gsArmed.setBoolValue(1);
+        }
+        p.navArmed.setBoolValue(0);
+    }
+}, 1, 1);
+
+setlistener('autopilot/century/att-button', func (node) {
+    p.verticalMode.setValue(ATT);
+    syncVertical(ATT);
+    p.gsArmed.setBoolValue(0);
+}, 1, 1);
+
+setlistener('autopilot/century/alt-button', func (node) {
+    p.verticalMode.setValue(ALT);
+    syncVertical(ALT);
+    p.gsArmed.setBoolValue(0);
+}, 1, 1);
+
+setlistener('autopilot/inputs/pitch-button', func (node) {
     var state = node.getValue() or 0;
+    setprop('autopilot/century/pitch-button', state);
     if (!state) {
         syncVertical();
     }
