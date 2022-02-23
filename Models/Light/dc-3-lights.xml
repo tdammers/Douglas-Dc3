@@ -62,9 +62,6 @@
 
   <!-- Left Landing Light -->
   <model>
-    <condition>
-      <property>sim/model/config/light-cone</property>
-    </condition>
     <path>Aircraft/Douglas-Dc3/Models/Light/LandingLightL.xml</path>
     <offsets>
       <x-m> -4.316 </x-m>
@@ -76,9 +73,6 @@
 
   <!-- Right Landing Light -->
   <model>
-    <condition>
-      <property>sim/model/config/light-cone</property>
-    </condition>
     <path>Aircraft/Douglas-Dc3/Models/Light/LandingLightR.xml</path>
     <offsets>
       <x-m> -4.316 </x-m>
