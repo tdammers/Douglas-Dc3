@@ -239,41 +239,13 @@
     </model>
 
 
-    <!-- Radio stack added later -->
     <model>
-        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/VHF-22/ctl22-com1.xml</path>
+        <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/RadioStack/radio-stack.xml</path>
         <offsets>
-            <x-m> -0.011 </x-m>
-            <y-m> -0.531 </y-m>
-            <z-m>  0.150 </z-m>
-            <roll-deg>0.5</roll-deg>
-        </offsets>
-    </model>
-    <model>
-        <path>Aircraft/Instruments-3d/TDR-94/ctl92-transponder.xml</path>
-        <offsets>
-            <x-m> -0.010 </x-m>
-            <y-m> -0.470 </y-m>
-            <z-m>  0.152 </z-m>
-            <roll-deg>1</roll-deg>
-        </offsets>
-    </model>
-    <model>
-        <path>Aircraft/Instruments-3d/VIR-32/ctl32-nav1.xml</path>
-        <offsets>
-            <x-m> -0.010 </x-m>
-            <y-m> -0.401 </y-m>
-            <z-m>  0.150 </z-m>
-            <roll-deg>-0.5</roll-deg>
-        </offsets>
-    </model>
-    <model>
-        <path>Aircraft/Instruments-3d/ADF-462/ctl62-adf.xml</path>
-        <offsets>
-            <x-m> -0.010 </x-m>
-            <y-m> -0.340 </y-m>
-            <z-m>  0.150 </z-m>
-            <roll-deg>0.55</roll-deg>
+            <x-m>  0.20 </x-m>
+            <y-m>  0.00 </y-m>
+            <z-m>  1.055 </z-m>
+            <pitch-deg>75</pitch-deg>
         </offsets>
     </model>
 
