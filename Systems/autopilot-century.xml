@@ -617,7 +617,7 @@
         <reference>
             <property>autopilot/settings/target-roll-rate-degps</property>
         </reference>
-        <output>controls/flight/aileron</output>
+        <output>autopilot/internal/aileron</output>
         <Kp>0.1</Kp>
         <Ki>1.0</Ki>
     </pi-simple-controller>
@@ -639,9 +639,65 @@
         <reference>
             <property>autopilot/settings/target-pitch-rate-degps</property>
         </reference>
+        <output>autopilot/internal/elevator</output>
+        <Kp>-0.025</Kp>
+        <Ki>-0.25</Ki>
+    </pi-simple-controller>
+
+    <!-- Servos -->
+    <filter>
+        <name>Aileron servo</name>
+        <type>noise-spike</type>
+        <enable>
+            <condition>
+                <and>
+                    <property>autopilot/century/active</property>
+                    <not>
+                        <property>controls/autoflight/cws</property>
+                    </not>
+                </and>
+            </condition>
+        </enable>
+        <max-rate-of-change>5</max-rate-of-change>
+        <input>autopilot/internal/aileron</input>
+        <output>controls/flight/aileron</output>
+    </filter>
+    <filter>
+        <name>Elevator servo</name>
+        <type>noise-spike</type>
+        <enable>
+            <condition>
+                <and>
+                    <property>autopilot/century/active</property>
+                    <not>
+                        <property>controls/autoflight/cws</property>
+                    </not>
+                </and>
+            </condition>
+        </enable>
+        <max-rate-of-change>5</max-rate-of-change>
+        <input>autopilot/internal/elevator</input>
+        <output>controls/flight/elevator</output>
+    </filter>
+
+    <!-- Elevator trim -->
+    <pi-simple-controller>
+        <enable>
+            <condition>
+                <and>
+                    <property>autopilot/century/active</property>
+                    <not>
+                        <property>controls/autoflight/cws</property>
+                    </not>
+                </and>
+            </condition>
+        </enable>
+        <input>
+            <property>controls/flight/elevator</property>
+        </input>
         <output>controls/flight/elevator-trim</output>
-        <Kp>-0.1</Kp>
-        <Ki>-1.0</Ki>
+        <Kp>-0.025</Kp>
+        <Ki>-0.25</Ki>
     </pi-simple-controller>
     
 </PropertyList>
