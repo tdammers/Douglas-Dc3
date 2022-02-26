@@ -299,15 +299,15 @@
                 <property>instrumentation/nav[0]/frequencies/is-localizer-frequency</property>
             </condition>
             <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
-            <scale>-3</scale>
+            <scale>-2.5</scale>
         </reference>
         <reference>
             <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
             <scale>-10</scale>
         </reference>
         <output>autopilot/century/nav-intercept-course-offset</output>
-        <Kp>-20</Kp>
-        <Ki>-0.4</Ki>
+        <Kp>-30</Kp>
+        <Ki>0</Ki>
         <min>-45</min>
         <max>45</max>
     </pi-simple-controller>
