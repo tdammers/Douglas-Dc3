@@ -57,6 +57,34 @@
                     <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
                     <value>-0.95</value>
                 </greater-than>
+                <or>
+                    <!-- already in NAV mode -->
+                    <equals>
+                        <property>autopilot/century/lateral-mode</property>
+                        <value>2</value>
+                    </equals>
+                    <!-- NAV ARM mode, and course error catching up to selected intercept course -->
+                    <and>
+                        <less-than>
+                            <property>autopilot/century/nav-course-error</property>
+                            <value>0</value>
+                        </less-than>
+                        <greater-than>
+                            <property>autopilot/century/nav-intercept-course-offset</property>
+                            <property>autopilot/century/nav-course-error</property>
+                        </greater-than>
+                    </and>
+                    <and>
+                        <greater-than>
+                            <property>autopilot/century/nav-course-error</property>
+                            <value>0</value>
+                        </greater-than>
+                        <less-than>
+                            <property>autopilot/century/nav-intercept-course-offset</property>
+                            <property>autopilot/century/nav-course-error</property>
+                        </less-than>
+                    </and>
+                </or>
             </and>
         </input>
         <output>autopilot/century/nav-captured</output>

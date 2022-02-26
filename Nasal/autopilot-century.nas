@@ -162,6 +162,15 @@ setlistener('autopilot/century/gs-captured', func (node) {
     }
 }, 1, 0);
 
+setlistener('autopilot/century/nav-armed', func (node) {
+    if (node.getBoolValue()) {
+        if (getprop('autopilot/century/nav-captured')) {
+            setprop('autopilot/century/lateral-mode', 2);
+            setprop('autopilot/century/nav-armed', 0);
+        }
+    }
+}, 1, 0);
+
 setlistener('autopilot/century/nav-captured', func (node) {
     if (node.getBoolValue()) {
         if (getprop('autopilot/century/nav-armed')) {
