@@ -380,8 +380,32 @@
         <output>autopilot/settings/target-roll-rate-degps</output>
         <Kp>2.0</Kp>
         <Ki>0.2</Ki>
-        <min>-5</min>
-        <max>5</max>
+        <min>
+            <expression>
+                <max>
+                    <value>-5</value>
+                    <product>
+                        <dif>
+                            <value>-30</value>
+                            <property>instrumentation/attitude-indicator/indicated-roll-deg</property>
+                        </dif>
+                    </product>
+                </max>
+            </expression>
+        </min>
+        <max>
+            <expression>
+                <min>
+                    <value>5</value>
+                    <product>
+                        <dif>
+                            <value>30</value>
+                            <property>instrumentation/attitude-indicator/indicated-roll-deg</property>
+                        </dif>
+                    </product>
+                </min>
+            </expression>
+        </max>
     </pi-simple-controller>
     
     <!-- Pitch computers -->
