@@ -301,6 +301,8 @@
         <rev-button type="int">0</rev-button>
         <att-button type="int">0</att-button>
         <alt-button type="int">0</alt-button>
+        <ga-button type="int">0</ga-button>
+        <ga-airspeed type="double">105</ga-airspeed>
     </century>
     <inputs>
         <pitch-button type="int">0</pitch-button>

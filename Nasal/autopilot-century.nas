@@ -15,9 +15,12 @@ var NAV = 2;
 
 var ATT = 0;
 var ALT = 1;
+var GS = 2;
+var GA = 3;
 
 
-setprop('controls/flight/cws', 0);
+setprop('controls/autoflight/cws', 0);
+setprop('controls/autoflight/toga', 0);
 setprop('autopilot/century/hdg-button', 0);
 setprop('autopilot/century/nav-button', 0);
 setprop('autopilot/century/apr-button', 0);
@@ -141,6 +144,15 @@ setlistener('autopilot/century/alt-button', func (node) {
     p.verticalMode.setValue(ALT);
     syncVertical(ALT);
     p.gsArmed.setBoolValue(0);
+}, 1, 1);
+
+setlistener('controls/autoflight/toga', func (node) {
+    var state = node.getValue() or 0;
+    if (state) {
+        p.verticalMode.setValue(GA);
+        syncVertical(GA);
+        p.gsArmed.setBoolValue(0);
+    }
 }, 1, 1);
 
 setlistener('autopilot/inputs/pitch-button', func (node) {

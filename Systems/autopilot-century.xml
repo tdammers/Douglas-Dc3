@@ -92,19 +92,18 @@
     
     
     <!-- lights -->
-
+    
     <filter>
         <type>derivative</type>
         <input>autopilot/century/active</input>
         <output>autopilot/century/active-derivative</output>
         <filter-time>0.1</filter-time>
     </filter>
-
+    
     <flipflop>
         <name>AP light blinking</name>
         <type>monostable</type>
-        <debug type="bool">true</debug>
-
+        
         <S>
             <less-than>
                 <property>autopilot/century/active-derivative</property>
@@ -116,7 +115,7 @@
         </time>
         <output>autopilot/century/lights/ap-blinking</output>
     </flipflop>
-
+    
     <filter>
         <name>AP light</name>
         <type>gain</type>
@@ -138,7 +137,7 @@
         </input>
         <output>autopilot/century/lights/ap</output>
     </filter>
-
+    
     <filter>
         <name>HDG light</name>
         <type>gain</type>
@@ -268,6 +267,28 @@
         <output>autopilot/century/lights/gs</output>
     </filter>
     
+    <filter>
+        <name>GA light</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <and>
+                    <property>/autopilot/century/active</property>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>3</value>
+                    </equals>
+                </and>
+            </condition>
+            <value>1</value>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>autopilot/century/lights/ga</output>
+    </filter>
+    
     <!-- Error computers -->
     <filter>
         <name>Century heading error</name>
@@ -337,7 +358,6 @@
     </filter>
     <pi-simple-controller>
         <name>NAV intercept offset</name>
-        <debug type="bool">false</debug>
         <input>
             <property>autopilot/century/nav-capture-rate</property>
         </input>
@@ -574,7 +594,6 @@
     </filter>
     <pi-simple-controller>
         <name>GS</name>
-        <debug type="bool">false</debug>
         <enable>
             <condition>
                 <equals>
@@ -664,8 +683,43 @@
         <Kp>0.005</Kp>
         <Ki>0.001</Ki>
         <min>-5</min>
+        <max>
+            <condition>
+                <equals>
+                    <property>autopilot/century/vertical-mode</property>
+                    <value>3</value>
+                </equals>
+            </condition>
+            <value>15</value>
+        </max>
         <max>5</max>
     </pi-simple-controller>
+
+    <pid-controller>
+        <name>GA</name>
+        <enable>
+            <condition>
+                <and>
+                    <equals>
+                        <property>autopilot/century/vertical-mode</property>
+                        <value>3</value>
+                    </equals>
+                    <not>
+                        <property>controls/autoflight/cws</property>
+                    </not>
+                </and>
+            </condition>
+        </enable>
+        <input>instrumentation/airspeed-indicator/indicated-speed-kt</input>
+        <reference>autopilot/century/ga-airspeed</reference>
+        <output>autopilot/settings/target-pitch-deg</output>
+        <Kp>-1</Kp>
+        <Ti>20</Ti>
+        <Td>0</Td>
+        <min>0</min>
+        <max>15</max>
+    </pid-controller>
+
     <pi-simple-controller>
         <name>Target pitch rate</name>
         <input>
@@ -742,7 +796,7 @@
         <Kp>-0.025</Kp>
         <Ki>-0.25</Ki>
     </pi-simple-controller>
-
+    
     <!-- Servos -->
     <filter>
         <name>Aileron servo</name>
@@ -778,7 +832,7 @@
         <input>autopilot/internal/elevator</input>
         <output>controls/flight/elevator</output>
     </filter>
-
+    
     <!-- Elevator trim -->
     <pi-simple-controller>
         <enable>
