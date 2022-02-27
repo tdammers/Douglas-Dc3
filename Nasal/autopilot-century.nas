@@ -24,6 +24,10 @@ setprop('autopilot/century/apr-button', 0);
 setprop('autopilot/century/att-button', 0);
 setprop('autopilot/century/alt-button', 0);
 
+props.globals.getNode('autopilot/century/lights').setBoolValue('blink-state', 0);
+
+var blinkProp = props.globals.getNode('autopilot/century/lights/blink-state');
+
 var p = {
     "verticalMode": props.globals.getNode('autopilot/century/vertical-mode'),
     "lateralMode": props.globals.getNode('autopilot/century/lateral-mode'),
@@ -179,3 +183,7 @@ setlistener('autopilot/century/nav-captured', func (node) {
         }
     }
 }, 1, 0);
+
+var blinkTimer = maketimer(0.5, func { blinkProp.toggleBoolValue(); });
+blinkTimer.simulatedTime = 1;
+blinkTimer.start();

@@ -92,6 +92,53 @@
     
     
     <!-- lights -->
+
+    <filter>
+        <type>derivative</type>
+        <input>autopilot/century/active</input>
+        <output>autopilot/century/active-derivative</output>
+        <filter-time>0.1</filter-time>
+    </filter>
+
+    <flipflop>
+        <name>AP light blinking</name>
+        <type>monostable</type>
+        <debug type="bool">true</debug>
+
+        <S>
+            <less-than>
+                <property>autopilot/century/active-derivative</property>
+                <value>0.0</value>
+            </less-than>
+        </S>
+        <time>
+            <value>5</value>
+        </time>
+        <output>autopilot/century/lights/ap-blinking</output>
+    </flipflop>
+
+    <filter>
+        <name>AP light</name>
+        <type>gain</type>
+        <gain>1</gain>
+        <input>
+            <condition>
+                <or>
+                    <property>/autopilot/century/active</property>
+                    <and>
+                        <property>/autopilot/century/lights/ap-blinking</property>
+                        <property>/autopilot/century/lights/blink-state</property>
+                    </and>
+                </or>
+            </condition>
+            <value>1</value>
+        </input>
+        <input>
+            <value>0</value>
+        </input>
+        <output>autopilot/century/lights/ap</output>
+    </filter>
+
     <filter>
         <name>HDG light</name>
         <type>gain</type>

@@ -7,7 +7,7 @@
         <type>material</type>
         <object-name>Light.AP</object-name>
         <emission>
-            <factor-prop>autopilot/century/active</factor-prop>
+            <factor-prop>autopilot/century/lights/ap</factor-prop>
             <red>1</red>
             <green>1</green>
             <blue>1</blue>
@@ -16,7 +16,7 @@
     <animation>
         <type>textranslate</type>
         <object-name>Light.AP</object-name>
-        <property>autopilot/century/active</property>
+        <property>autopilot/century/lights/ap</property>
         <factor>0.625</factor>
         <axis>
             <x>0</x>
