@@ -96,6 +96,12 @@
       </config>
     </model>
 
+    <current-view>
+       <can-change-z-offset type="bool">false</can-change-z-offset>
+       <z-offset-min-m type="float">12.5</z-offset-min-m>
+       <z-offset-max-m type="float">3200.0</z-offset-max-m>
+    </current-view>
+
     <aircraft-data>
         <path>/sim/model/config/show-yokes</path>
         <path>/sim/model/config/show-pilot</path>
@@ -241,11 +247,14 @@
       <property-rule n="101">
           <path>Aircraft/Douglas-Dc3/Systems/autopilot-control.xml</path>
       </property-rule>
+      <property-rule n="102">
+          <path>Aircraft/Douglas-Dc3/Systems/view-logic.xml</path>
+      </property-rule>
     </systems>
     
   </sim>
 
-  <input include="dc-3-keyboard.xml"/>
+  <input include="dc-3-input.xml"/>
   
   <controls include="controls.xml"/>
 
