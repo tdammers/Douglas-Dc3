@@ -55,146 +55,153 @@ var wingsLevel = func {
     setprop('autopilot/settings/target-roll-deg', 0.0);
 }
 
-setlistener('autopilot/century/active', func (node) {
-    if (node.getBoolValue()) {
-        # A/P activated
+var initialized = 0;
 
-        # wings level
-        p.lateralMode.setValue(0);
+setlistener('/sim/signals/fdm-initialized', func {
+    if (initialized) return;
+    initialized = 1;
 
-        # pitch hold
-        p.verticalMode.setValue(0);
+    setlistener('autopilot/century/active', func (node) {
+        if (node.getBoolValue()) {
+            # A/P activated
 
-        # disarm APR
-        p.gsArmed.setValue(0);
+            # wings level
+            p.lateralMode.setValue(0);
 
-        # disarm NAV
-        p.navArmed.setValue(0);
+            # pitch hold
+            p.verticalMode.setValue(0);
 
-        # wings level
-        wingsLevel();
-        syncVertical(0);
-    }
-}, 1, 0);
+            # disarm APR
+            p.gsArmed.setValue(0);
 
-setlistener('autopilot/century/hdg-button', func (node) {
-    var mode = p.lateralMode.getValue();
+            # disarm NAV
+            p.navArmed.setValue(0);
 
-    if (mode == HDG) {
-        p.lateralMode.setValue(ROLL);
-        wingsLevel();
-    }
-    else {
-        p.lateralMode.setValue(HDG);
-    }
-    p.gsArmed.setBoolValue(0);
-    p.navArmed.setBoolValue(0);
-}, 1, 1);
+            # wings level
+            wingsLevel();
+            syncVertical(0);
+        }
+    }, 1, 0);
 
-setlistener('autopilot/century/nav-button', func (node) {
-    var mode = p.lateralMode.getValue();
-    var arm = node.getValue() == 2;
+    setlistener('autopilot/century/hdg-button', func (node) {
+        var mode = p.lateralMode.getValue();
 
-    if (arm) {
-        p.navArmed.toggleBoolValue();
-        p.gsArmed.setBoolValue(0);
-    }
-    else {
-        if (mode == NAV) {
+        if (mode == HDG) {
             p.lateralMode.setValue(ROLL);
             wingsLevel();
         }
         else {
-            p.lateralMode.setValue(NAV);
+            p.lateralMode.setValue(HDG);
         }
         p.gsArmed.setBoolValue(0);
         p.navArmed.setBoolValue(0);
-    }
-}, 1, 1);
+    }, 1, 1);
 
-setlistener('autopilot/century/apr-button', func (node) {
-    var mode = p.lateralMode.getValue();
-    var arm = node.getValue() == 2;
+    setlistener('autopilot/century/nav-button', func (node) {
+        var mode = p.lateralMode.getValue();
+        var arm = node.getValue() == 2;
 
-    if (arm) {
-        p.gsArmed.toggleBoolValue();
-        p.navArmed.setBoolValue(p.gsArmed.getBoolValue());
-    }
-    else {
-        if (p.gsArmed.getBoolValue()) {
-            p.lateralMode.setValue(ROLL);
-            wingsLevel();
+        if (arm) {
+            p.navArmed.toggleBoolValue();
             p.gsArmed.setBoolValue(0);
         }
         else {
-            p.lateralMode.setValue(NAV);
-            p.gsArmed.setBoolValue(1);
+            if (mode == NAV) {
+                p.lateralMode.setValue(ROLL);
+                wingsLevel();
+            }
+            else {
+                p.lateralMode.setValue(NAV);
+            }
+            p.gsArmed.setBoolValue(0);
+            p.navArmed.setBoolValue(0);
         }
-        p.navArmed.setBoolValue(0);
-    }
-}, 1, 1);
+    }, 1, 1);
 
-setlistener('autopilot/century/att-button', func (node) {
-    p.verticalMode.setValue(ATT);
-    syncVertical(ATT);
-    p.gsArmed.setBoolValue(0);
-}, 1, 1);
+    setlistener('autopilot/century/apr-button', func (node) {
+        var mode = p.lateralMode.getValue();
+        var arm = node.getValue() == 2;
 
-setlistener('autopilot/century/alt-button', func (node) {
-    p.verticalMode.setValue(ALT);
-    syncVertical(ALT);
-    p.gsArmed.setBoolValue(0);
-}, 1, 1);
+        if (arm) {
+            p.gsArmed.toggleBoolValue();
+            p.navArmed.setBoolValue(p.gsArmed.getBoolValue());
+        }
+        else {
+            if (p.gsArmed.getBoolValue()) {
+                p.lateralMode.setValue(ROLL);
+                wingsLevel();
+                p.gsArmed.setBoolValue(0);
+            }
+            else {
+                p.lateralMode.setValue(NAV);
+                p.gsArmed.setBoolValue(1);
+            }
+            p.navArmed.setBoolValue(0);
+        }
+    }, 1, 1);
 
-setlistener('controls/autoflight/toga', func (node) {
-    var state = node.getValue() or 0;
-    if (state) {
-        p.verticalMode.setValue(GA);
-        syncVertical(GA);
+    setlistener('autopilot/century/att-button', func (node) {
+        p.verticalMode.setValue(ATT);
+        syncVertical(ATT);
         p.gsArmed.setBoolValue(0);
-    }
-}, 1, 1);
+    }, 1, 1);
 
-setlistener('autopilot/inputs/pitch-button', func (node) {
-    var state = node.getValue() or 0;
-    setprop('autopilot/century/pitch-button', state);
-    if (!state) {
-        syncVertical();
-    }
-}, 1, 0);
+    setlistener('autopilot/century/alt-button', func (node) {
+        p.verticalMode.setValue(ALT);
+        syncVertical(ALT);
+        p.gsArmed.setBoolValue(0);
+    }, 1, 1);
 
-setlistener('controls/autoflight/cws', func (node) {
-    var state = node.getValue() or 0;
-    if (!state) {
-        syncVertical();
-    }
-}, 1, 0);
-
-setlistener('autopilot/century/gs-captured', func (node) {
-    if (node.getBoolValue()) {
-        if (getprop('autopilot/century/gs-armed')) {
-            setprop('autopilot/century/vertical-mode', 2);
+    setlistener('controls/autoflight/toga', func (node) {
+        var state = node.getValue() or 0;
+        if (state) {
+            p.verticalMode.setValue(GA);
+            syncVertical(GA);
+            p.gsArmed.setBoolValue(0);
         }
-    }
-}, 1, 0);
+    }, 1, 1);
 
-setlistener('autopilot/century/nav-armed', func (node) {
-    if (node.getBoolValue()) {
-        if (getprop('autopilot/century/nav-captured')) {
-            setprop('autopilot/century/lateral-mode', 2);
-            setprop('autopilot/century/nav-armed', 0);
+    setlistener('autopilot/inputs/pitch-button', func (node) {
+        var state = node.getValue() or 0;
+        setprop('autopilot/century/pitch-button', state);
+        if (!state) {
+            syncVertical();
         }
-    }
-}, 1, 0);
+    }, 1, 0);
 
-setlistener('autopilot/century/nav-captured', func (node) {
-    if (node.getBoolValue()) {
-        if (getprop('autopilot/century/nav-armed')) {
-            setprop('autopilot/century/lateral-mode', 2);
-            setprop('autopilot/century/nav-armed', 0);
+    setlistener('controls/autoflight/cws', func (node) {
+        var state = node.getValue() or 0;
+        if (!state) {
+            syncVertical();
         }
-    }
-}, 1, 0);
+    }, 1, 0);
+
+    setlistener('autopilot/century/gs-captured', func (node) {
+        if (node.getBoolValue()) {
+            if (getprop('autopilot/century/gs-armed')) {
+                setprop('autopilot/century/vertical-mode', 2);
+            }
+        }
+    }, 1, 0);
+
+    setlistener('autopilot/century/nav-armed', func (node) {
+        if (node.getBoolValue()) {
+            if (getprop('autopilot/century/nav-captured')) {
+                setprop('autopilot/century/lateral-mode', 2);
+                setprop('autopilot/century/nav-armed', 0);
+            }
+        }
+    }, 1, 0);
+
+    setlistener('autopilot/century/nav-captured', func (node) {
+        if (node.getBoolValue()) {
+            if (getprop('autopilot/century/nav-armed')) {
+                setprop('autopilot/century/lateral-mode', 2);
+                setprop('autopilot/century/nav-armed', 0);
+            }
+        }
+    }, 1, 0);
+});
 
 var blinkTimer = maketimer(0.5, func { blinkProp.toggleBoolValue(); });
 blinkTimer.simulatedTime = 1;
