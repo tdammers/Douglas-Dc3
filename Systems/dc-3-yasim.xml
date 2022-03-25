@@ -253,7 +253,7 @@
          taper="0.49"
          sweep="16.8">
          <stall aoa="14" width="1" peak="1.5"/>
-         <flap0 start="0" end="1" lift="1.2" drag="1.1"/>
+         <flap0 start="0" end="1" lift="2.0" drag="1.1"/>
 
          <control-input axis="/controls/flight/rudder" control="FLAP0" invert="true"/>
          <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
