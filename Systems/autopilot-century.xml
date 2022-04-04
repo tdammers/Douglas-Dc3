@@ -370,7 +370,7 @@
         </reference>
         <reference>
             <property>instrumentation/nav[0]/heading-needle-deflection-norm</property>
-            <scale>-10</scale>
+            <scale>-5</scale>
         </reference>
         <output>autopilot/century/nav-intercept-course-offset</output>
         <Kp>-30</Kp>
