@@ -85,7 +85,7 @@
   engine settings. Note that YASim doesn't do a good job of reporting low-power MP values so low-power MP will read low without
   developer correction.
 -->
-<airplane mass="18300" version="YASIM_VERSION_CURRENT">
+<airplane mass="16865" mtow-lbs="26900" version="YASIM_VERSION_CURRENT">
 
   <approach speed="66" aoa="7" fuel="0.2">
     <control-setting axis="/controls/engines/engine[0]/throttle" value="0.4"/>

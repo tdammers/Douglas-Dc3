@@ -176,60 +176,61 @@
     <!-- ############################### -->
     
     <weight n="0">
-      <name>Compartiment A</name>
-      <weight-lb>0</weight-lb>
+      <name>Flight Crew (A)</name>
+      <weight-lb>360</weight-lb>
       <max-lb>600</max-lb>
       <min-lb>0</min-lb>
     </weight>
 
     <weight n="1">
-      <name>Compartiment B</name>
-      <weight-lb>0</weight-lb>
+      <name>Baggage Front (B)</name>
+      <weight-lb>200</weight-lb>
       <max-lb>800</max-lb>
       <min-lb>0</min-lb>
     </weight>
 
     <weight n="2">
-      <name>Compartiment C</name>
-      <weight-lb>0</weight-lb>
+      <name>Front Galley / Navigator (C)</name>
+      <weight-lb>100</weight-lb>
       <max-lb>1000</max-lb>
       <min-lb>0</min-lb>
     </weight>
 
 
     <weight n="3">
-      <name>Compartiment D</name>
+      <name>Passengers / Cargo D</name>
       <weight-lb>0</weight-lb>
       <max-lb>3000</max-lb>
       <min-lb>0</min-lb>
     </weight>
 
     <weight n="4">
-      <name>Compartiment E</name>
+      <name>Passengers / Cargo E</name>
       <weight-lb>0</weight-lb>
       <max-lb>3000</max-lb>
       <min-lb>0</min-lb>
     </weight>
 
     <weight n="5">
-      <name>Compartiment F</name>
+      <name>Passengers / Cargo F</name>
       <weight-lb>0</weight-lb>
       <max-lb>2400</max-lb>
       <min-lb>0</min-lb>
     </weight>
 
-    <!--
     <weight n="6">
+      <name>Baggage Rear (G)</name>
       <weight-lb>0</weight-lb>
       <max-lb>1300</max-lb>
       <min-lb>0</min-lb>
     </weight>
 
     <weight n="7">
-      <weight-lb>0</weight-lb>
+      <name>Rear Galley / Lavatory</name>
+      <weight-lb>150</weight-lb>
       <max-lb>350</max-lb>
       <min-lb>0</min-lb>
-    </weight>-->
+    </weight>
 
     <help include="help.xml"/>
       
