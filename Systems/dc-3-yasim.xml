@@ -85,7 +85,7 @@
   engine settings. Note that YASim doesn't do a good job of reporting low-power MP values so low-power MP will read low without
   developer correction.
 -->
-<airplane mass="18300" version="YASIM_VERSION_CURRENT">
+<airplane mass="16865" mtow-lbs="26900" version="YASIM_VERSION_CURRENT">
 
   <approach speed="66" aoa="7" fuel="0.2">
     <control-setting axis="/controls/engines/engine[0]/throttle" value="0.4"/>
@@ -418,7 +418,29 @@
        CG goal: 23% MAC, x=3.384
        Re-distribute as needed to place CG at roughly 23% MAC.
   -->
-  <ballast x="8" y="0.0" z="-1" mass="4650"/>
+  <ballast x="8" y="0.0" z="-1" mass="3300"/>
+
+  <!-- Loading compartments:
+
+                           station (in)     X (m rel. CG)
+  (**CG**)                          375              0.00
+  A (flight deck forward):            0              9.52
+  B (flight deck mid):              120              6.48
+  C (radio op / front galley):      160              5.46
+  D (pax/cargo 1):                  225              3.81
+  E (pax/cargo 2):                  320              1.40
+  F (pax/cargo 3):                  405             -0.76
+  G (cargo 4 / baggage):            490             -2.92
+  H (lavatory / rear galley):       560             -4.70
+  -->
+  <weight x="9.52" y="0" z="0" mass-prop="/sim/weight[0]/weight-lb" />
+  <weight x="6.48" y="0" z="0" mass-prop="/sim/weight[1]/weight-lb" />
+  <weight x="5.46" y="0" z="0" mass-prop="/sim/weight[2]/weight-lb" />
+  <weight x="3.81" y="0" z="0" mass-prop="/sim/weight[3]/weight-lb" />
+  <weight x="1.40" y="0" z="0" mass-prop="/sim/weight[4]/weight-lb" />
+  <weight x="-0.76" y="0" z="0" mass-prop="/sim/weight[5]/weight-lb" />
+  <weight x="-2.92" y="0" z="0" mass-prop="/sim/weight[6]/weight-lb" />
+  <weight x="-4.70" y="0" z="0" mass-prop="/sim/weight[7]/weight-lb" />
 
   <!-- hitch -->
   <hitch name="aerotow" x="-9.7" y="0" z="0.084" force-is-calculated-by-other="1">
