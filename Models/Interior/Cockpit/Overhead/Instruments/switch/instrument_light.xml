@@ -53,7 +53,7 @@
   </animation>
 
   <animation>
-    <type>rotate</type>
+    <type>knob</type>
     <object-name>bouton</object-name>
     <property>controls/lighting/instruments-norm</property>
     <factor> -1125 </factor>
@@ -62,6 +62,20 @@
       <y>  0 </y>
       <z>  0 </z>
     </axis>
+    <action>
+      <binding>
+        <command>property-adjust</command>
+        <property>controls/lighting/instruments-norm</property>
+        <factor>0.01</factor>
+        <min>0</min>
+        <max>0.16</max>
+        <wrap>0</wrap>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>sim/model/sound/click</property>
+      </binding>
+    </action>
   </animation>
 
 </PropertyList>
