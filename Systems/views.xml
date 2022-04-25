@@ -63,9 +63,9 @@
       <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
       <x-offset-m archive="y">0.000</x-offset-m> <!-- Right -->
       <y-offset-m archive="y">0.434</y-offset-m> <!-- Up    -->
-      <z-offset-m archive="y">-8.2</z-offset-m> <!-- Back  -->
-      <pitch-offset-deg>60</pitch-offset-deg>
-      <default-field-of-view-deg type="double">60</default-field-of-view-deg>
+      <z-offset-m archive="y">-7.965</z-offset-m> <!-- Back  -->
+      <pitch-offset-deg>30</pitch-offset-deg>
+      <default-field-of-view-deg type="double">72</default-field-of-view-deg>
     </config>
   </view>
 
