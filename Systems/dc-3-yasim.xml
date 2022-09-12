@@ -390,7 +390,7 @@
         sfric="0.9"
         dfric="0.8"
         castering="1">
-        <control-input axis="/controls/gear/tailwheel-lock" control="CASTERING" src0="0" src1="1" dst0="1" dst1="0" />
+        <control-input axis="/controls/gear/tailwheel-lock-engaged" control="CASTERING" src0="0" src1="1" dst0="1" dst1="0" />
   </gear>
 
   <!-- Buckaroo notes:

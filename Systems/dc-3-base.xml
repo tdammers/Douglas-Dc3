@@ -245,6 +245,9 @@
       <autopilot n="102">
           <path>Aircraft/Douglas-Dc3/Systems/autopilot-century.xml</path>
       </autopilot>
+      <autopilot n="103">
+          <path>Aircraft/Douglas-Dc3/Systems/tailwheel-lock.xml</path>
+      </autopilot>
       <property-rule n="101">
           <path>Aircraft/Douglas-Dc3/Systems/autopilot-control.xml</path>
       </property-rule>
