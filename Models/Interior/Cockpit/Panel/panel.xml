@@ -112,15 +112,45 @@
     <name>Panel1980</name>
     <path>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/panel-1980.xml</path>
   </model>
+
+  <model>
+    <name>gps155</name>
+    <path>Aircraft/Douglas-Dc3/Models/Instruments/gps155.xml</path>
+    <offsets>
+      <x-m>-0.01</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.4</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
   
   <animation>
     <type>select</type>
     <object-name>Panel1980</object-name>
     <condition>
-      <equals>
-        <property>sim/model/config/panel</property>
-        <value>standard</value>
-      </equals>
+      <or>
+        <equals>
+          <property>sim/model/config/panel</property>
+          <value>standard</value>
+        </equals>
+        <equals>
+          <property>sim/model/config/panel</property>
+          <value>gps155</value>
+        </equals>
+      </or>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>gps155</object-name>
+    <condition>
+      <or>
+        <equals>
+          <property>sim/model/config/panel</property>
+          <value>gps155</value>
+        </equals>
+      </or>
     </condition>
   </animation>
 

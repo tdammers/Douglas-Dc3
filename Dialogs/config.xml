@@ -165,6 +165,7 @@
           <property>sim/model/config/panel</property>
           <value>traditional</value>
           <value>standard</value>
+          <value>gps155</value>
           <binding>
             <command>dialog-apply</command>
           </binding>

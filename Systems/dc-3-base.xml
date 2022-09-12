@@ -110,6 +110,7 @@
         <path>/sim/model/config/light-cone</path>
         <path>/sim/model/config/version</path>
         <path>/sim/model/config/panel</path>
+        <path>/instrumentation/gps155/settings</path>
     </aircraft-data>
 
     <rendering>
@@ -290,6 +291,9 @@
     <century>
       <file>Aircraft/Douglas-Dc3/Nasal/autopilot-century.nas</file>
     </century>
+    <gps155>
+      <file>Aircraft/Douglas-Dc3/Nasal/gps155.nas</file>
+    </gps155>
     <chronograph>
       <file>Aircraft/Douglas-Dc3/Models/Interior/Cockpit/Panel/Instruments/chronograph/chronograph.nas</file>
     </chronograph>
@@ -321,6 +325,9 @@
     <inputs>
         <pitch-button type="int">0</pitch-button>
     </inputs>
+    <route-manager>
+      <disable-fms type="bool">1</disable-fms>
+    </route-manager>
   </autopilot>
 
 </PropertyList>
