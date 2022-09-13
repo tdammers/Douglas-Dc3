@@ -587,6 +587,11 @@ var initDevice = func {
     setPropDefault(deviceProps.settings.fields.route.distanceMode, 'leg');
     setPropDefault(deviceProps.settings.fields.route.legExtraMode, 'dtk');
 
+    setPropDefault(deviceProps.settings.fields.cdi.gs, 'gs');
+    setPropDefault(deviceProps.settings.fields.cdi.dist, 'dist');
+    setPropDefault(deviceProps.settings.fields.cdi.trk, 'trk');
+    setPropDefault(deviceProps.settings.fields.cdi.ete, 'ete');
+
     deviceProps['currentPage'] = {
         nav: props.globals.getNode('instrumentation/gps155/currentPage/nav', 1),
         set: props.globals.getNode('instrumentation/gps155/currentPage/set', 1),
