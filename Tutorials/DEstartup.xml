@@ -34,6 +34,10 @@
       <value>0.0</value>
     </set>
     <set>
+      <property>controls/engines/mixture-all</property>
+      <value>1.0</value>
+    </set>
+    <set>
       <property>controls/engines/engine[0]/mixture</property>
       <value>0.0</value>
     </set>
@@ -261,7 +265,7 @@
       <condition>
         <less-than>
           <property>controls/engines/engine[1]/mixture</property>
-          <value>0.55</value>
+          <value>0.45</value>
         </less-than>
       </condition>
     </error>
@@ -270,7 +274,7 @@
       <condition>
         <greater-than>
           <property>controls/engines/engine[1]/mixture</property>
-          <value>0.75</value>
+          <value>0.55</value>
         </greater-than>
       </condition>
     </error>
@@ -279,11 +283,11 @@
         <and>
           <greater-than>
             <property>controls/engines/engine[1]/mixture</property>
-            <value>0.55</value>
+            <value>0.45</value>
           </greater-than>
           <less-than>
             <property>controls/engines/engine[1]/mixture</property>
-            <value>0.75</value>
+            <value>0.55</value>
           </less-than>
         </and>
       </condition>
