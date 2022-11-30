@@ -311,6 +311,11 @@
     <filter>
         <type>gain</type>
         <gain>1</gain>
+        <enable>
+            <condition>
+                <property>autopilot/century/available</property>
+            </condition>
+        </enable>
         <input>
             <condition>
                 <equals>
@@ -401,12 +406,15 @@
         <name>Target roll angle</name>
         <enable>
             <condition>
-                <not>
-                    <equals>
-                        <property>autopilot/century/lateral-mode</property>
-                        <value>0</value>
-                    </equals>
-                </not>
+                <and>
+                    <not>
+                        <equals>
+                            <property>autopilot/century/lateral-mode</property>
+                            <value>0</value>
+                        </equals>
+                    </not>
+                    <property>autopilot/century/available</property>
+                </and>
             </condition>
         </enable>
         <input>
@@ -423,10 +431,13 @@
         <gain>1</gain>
         <enable>
             <condition>
-                <equals>
-                    <property>autopilot/century/lateral-mode</property>
-                    <value>0</value>
-                </equals>
+                <and>
+                    <equals>
+                        <property>autopilot/century/lateral-mode</property>
+                        <value>0</value>
+                    </equals>
+                    <property>autopilot/century/available</property>
+                </and>
             </condition>
         </enable>
         <input>
@@ -651,6 +662,7 @@
         <enable>
             <condition>
                 <and>
+                    <property>autopilot/century/available</property>
                     <or>
                         <equals>
                             <property>autopilot/century/vertical-mode</property>
@@ -700,6 +712,7 @@
         <enable>
             <condition>
                 <and>
+                    <property>autopilot/century/available</property>
                     <equals>
                         <property>autopilot/century/vertical-mode</property>
                         <value>3</value>
