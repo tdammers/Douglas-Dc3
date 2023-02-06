@@ -163,10 +163,11 @@ var Startup = func{
   setprop("controls/electric/engine[1]/generator",1);
   setprop("/controls/engines/engine[0]/magnetos",3);
   setprop("controls/engines/engine[0]/propeller-pitch",1);
-  setprop("controls/engines/engine[0]/mixture",0.7);
+  setprop("controls/engines/mixture-all",0); 
+  setprop("controls/engines/engine[0]/mixture",0.5);
   setprop("/controls/engines/engine[1]/magnetos",3);
   setprop("controls/engines/engine[1]/propeller-pitch",1);
-  setprop("controls/engines/engine[1]/mixture",0.7);
+  setprop("controls/engines/engine[1]/mixture",0.5);
   setprop("/controls/gear/brake-parking",0);
   setprop("/instrumentation/doors/crew/position-norm",0);
   setprop("/controls/lighting/instruments-norm",1);
@@ -179,6 +180,7 @@ var Shutdown = func{
   setprop("controls/electric/engine[1]/generator",0);
   setprop("/controls/engines/engine[0]/magnetos",0);
   setprop("controls/engines/engine[0]/propeller-pitch",0);
+  setprop("controls/engines/mixture-all",1);
   setprop("controls/engines/engine[0]/mixture",0);
   setprop("/engines/engine[0]/rpm",0);
   setprop("/engines/engine[0]/running",0);
@@ -339,7 +341,8 @@ var Engine = {
 
 EngineLeft = Engine.new(0);
 EngineRight = Engine.new(1);
-
+setprop("controls/engines/mixture-all",1);
+  
 ###############################################
 ###############################################
 ###############################################

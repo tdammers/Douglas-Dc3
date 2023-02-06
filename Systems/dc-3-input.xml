@@ -132,24 +132,42 @@
       <name>m</name>
       <desc>Mixture richer</desc>
       <binding>
-        <command>property-adjust</command>
-        <property>/controls/engines/mixture-all</property>
-        <step type="double">0.5</step>
-        <min type="double">-1</min>
-        <max type="double">1</max>
-        <wrap type="bool">false</wrap>
+          <command>nasal</command>
+          <script>
+            var mixture = getprop("/controls/engines/mixture-all");
+            if (mixture == 1) {
+              setprop("/controls/engines/mixture-all", 0.5);
+            } else {
+              if (mixture == 0.5) {
+                setprop("/controls/engines/mixture-all", 0);
+              } else {
+                if (mixture == 0) {
+                  setprop("/controls/engines/mixture-all", -1);
+                }
+              }
+            }
+          </script>
       </binding>
     </key>
     <key n="77">
       <name>M</name>
       <desc>Mixture leaner</desc>
       <binding>
-        <command>property-adjust</command>
-        <property>/controls/engines/mixture-all</property>
-        <step type="double">-0.5</step>
-        <min type="double">-1</min>
-        <max type="double">1</max>
-        <wrap type="bool">false</wrap>
+          <command>nasal</command>
+          <script>
+            var mixture = getprop("/controls/engines/mixture-all");
+            if (mixture == -1) {
+              setprop("/controls/engines/mixture-all", 0);
+            } else {
+              if (mixture == 0) {
+                setprop("/controls/engines/mixture-all", 0.5);
+              } else {
+                if (mixture == 0.5) {
+                  setprop("/controls/engines/mixture-all", 1);
+                }
+              }
+            }
+          </script>
       </binding>
     </key>
     
